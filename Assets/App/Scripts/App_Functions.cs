@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Management;
+using static UnityEngine.InputSystem.InputAction;
 
 public class App_Functions : Singleton<App_Functions>
 {
@@ -26,6 +27,7 @@ public class App_Functions : Singleton<App_Functions>
       StartCoroutine(StartVr());
     }
   }
+
   private void OnDestroy()
   {
     if (_vrStarted) { StopVr(); }
@@ -40,7 +42,6 @@ public class App_Functions : Singleton<App_Functions>
     }
     else
     {
-      Debug.Log("Starting VR...");
       XRGeneralSettings.Instance.Manager.StartSubsystems();
       yield return null;
     }

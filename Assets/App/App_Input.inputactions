@@ -124,25 +124,9 @@
             ]
         },
         {
-            "name": "VrInput",
+            "name": "Controls",
             "id": "937cba72-ae89-4aca-8a20-48ef186c134c",
             "actions": [
-                {
-                    "name": "PullBow",
-                    "type": "Button",
-                    "id": "511d0d41-ea40-4ab0-9c30-39e30740a03c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Movement",
-                    "type": "Value",
-                    "id": "188da42c-f424-462e-b841-3d9ea4c92136",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": ""
-                },
                 {
                     "name": "Dash",
                     "type": "Button",
@@ -152,10 +136,82 @@
                     "interactions": ""
                 },
                 {
-                    "name": "RightThumb",
+                    "name": "Look_NonVr",
+                    "type": "Value",
+                    "id": "660e0630-5ef9-440e-b021-4c95a7346298",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Look_Vr",
                     "type": "Value",
                     "id": "a10942c5-3fc0-4e7d-977e-8c92acb8f133",
                     "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Movement_Vr",
+                    "type": "Value",
+                    "id": "188da42c-f424-462e-b841-3d9ea4c92136",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Movement_Forward",
+                    "type": "Button",
+                    "id": "86eedf7b-4c58-4585-ba47-7345d2bf3228",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Movement_Strafe_Right",
+                    "type": "Button",
+                    "id": "89e7f53b-c66d-4f7b-a03a-2c173b0ead04",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Movement_Backward",
+                    "type": "Button",
+                    "id": "36fda522-fa9f-4eac-9e4e-a1bdf08cabee",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Movement_Strafe_Left",
+                    "type": "Button",
+                    "id": "421bbe6b-8da9-416b-a084-a88546226ad8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "PullBow",
+                    "type": "Button",
+                    "id": "17aa075a-0912-45a4-b135-e90d4ed253f0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "c4230c7e-c5f2-4e33-a598-49a661353e9d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "MouseLookEnable",
+                    "type": "Button",
+                    "id": "51faf3a0-5bce-4b31-836a-24adac1d872f",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 }
@@ -163,34 +219,23 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "18d04955-30ba-4aea-ba44-5a8d21e5b5a6",
-                    "path": "<XRController>{LeftHand}/triggerPressed",
+                    "id": "cdadaf9c-459f-4c3e-b866-1b7d6a239e39",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "PullBow",
+                    "action": "Movement_Backward",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "f1218889-d9bd-4a75-a6e4-21a34e482550",
-                    "path": "<Mouse>/leftButton",
+                    "id": "62292788-6b34-4c4e-83e5-3792d79beb4f",
+                    "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "PullBow",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a2a51509-71df-4036-a5b4-2ae34a85a32b",
-                    "path": "<XRController>{LeftHand}/thumbstick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
+                    "action": "Look_NonVr",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -218,77 +263,40 @@
                 },
                 {
                     "name": "",
-                    "id": "25af9202-b9bf-4310-b174-3b3e9bbe6ed7",
-                    "path": "<XRController>{RightHand}/thumbstick",
+                    "id": "a2a51509-71df-4036-a5b4-2ae34a85a32b",
+                    "path": "<XRController>{LeftHand}/thumbstick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RightThumb",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Input",
-            "id": "0d5a9afe-73df-4ca6-8f2b-7bfb8c2e0cf2",
-            "actions": [
-                {
-                    "name": "Movement_Forward",
-                    "type": "Button",
-                    "id": "e84b7550-dee2-452d-a622-dc021594c0b0",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Movement_Strafe_Right",
-                    "type": "Button",
-                    "id": "12855027-229e-4f1e-887b-f34a99eb04b5",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Movement_Backward",
-                    "type": "Button",
-                    "id": "3f7a36e9-e6db-423e-b3f0-dac05f93d5ac",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Movement_Strafe_Left",
-                    "type": "Button",
-                    "id": "f6f9be93-4f63-4a7f-af9d-b7df09e49d6a",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Look",
-                    "type": "Value",
-                    "id": "35943677-1604-4c84-9e65-995fb889cbe4",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": ""
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "f86dd7cb-bac5-46b1-be1f-6b25df5fc5b7",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement_Forward",
+                    "action": "Movement_Vr",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "0bf3d939-86de-4750-a073-97dc4c673402",
+                    "id": "7741b84d-2adb-4822-a8cb-b8353ed71ff7",
+                    "path": "<XRController>{LeftHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PullBow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d280422a-93f7-4ed6-a5cd-f48522a348aa",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "154587f9-eac6-41aa-9f30-64f7295a3259",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
@@ -299,19 +307,8 @@
                 },
                 {
                     "name": "",
-                    "id": "43354654-1417-40bc-8c86-18db9e20279a",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement_Backward",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "728ea9d5-397a-4bfc-8462-aa52c34840b2",
-                    "path": "<SwitchProControllerHID>/buttonEast",
+                    "id": "fd22446f-9828-4068-9805-9dae194515ff",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -321,12 +318,45 @@
                 },
                 {
                     "name": "",
-                    "id": "e8a63e02-5092-4877-a865-c3193321a6ed",
-                    "path": "<Mouse>/delta",
+                    "id": "58974400-6512-41cc-8bfb-fdb6f7b273c3",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Look",
+                    "action": "Movement_Forward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "702c7e8e-a0d8-40fa-9987-27b256d9e4b3",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseLookEnable",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f1218889-d9bd-4a75-a6e4-21a34e482550",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PullBow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "25af9202-b9bf-4310-b174-3b3e9bbe6ed7",
+                    "path": "<XRController>{RightHand}/thumbstick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look_Vr",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

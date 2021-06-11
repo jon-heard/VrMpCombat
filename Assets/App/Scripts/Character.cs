@@ -5,9 +5,11 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
   [Header("Stats")]
-  public float Speed = 1.0f;
+  public float Speed = 2.0f;
+  public float DashSpeed = 4.0f;
   [Header("Body parts")]
   public Transform Head;
+  public Transform Head_UpDown;
   public Transform Hand_Left;
   public Transform Hand_Right;
   public Transform Body;
@@ -15,6 +17,7 @@ public class Character : MonoBehaviour
   public Bow MyBow;
 
   [NonSerialized] public Vector2 MovementInput;
+  [NonSerialized] public bool IsDashing;
 
   public bool IsPullingBow
   {
@@ -22,12 +25,6 @@ public class Character : MonoBehaviour
     set
     {
       if (value == _isPullingBow) { return; }
-      if (value &&
-          (Hand_Left.position - Hand_Right.position).sqrMagnitude >
-          _maxDistanceTriggerBowPullSquared)
-      {
-        return;
-      }
       _isPullingBow = value;
       MyBow.IsPulling = _isPullingBow;
     }
@@ -41,13 +38,10 @@ public class Character : MonoBehaviour
     transform.localEulerAngles = t;
   }
 
-  private float _maxDistanceTriggerBowPullSquared;
   private float _ControllerTurnAmount;
 
   private void Start()
   {
-    _maxDistanceTriggerBowPullSquared =
-      Mathf.Pow(App_Details.Instance.MAX_DISTANCE_TRIGGER_BOWPULL, 2);
     _ControllerTurnAmount = App_Details.Instance.CONTROLLER_TURN_AMOUNT;
 
     // Setup Ignore list for arrows to not contact characters body
@@ -80,16 +74,21 @@ public class Character : MonoBehaviour
 
   private void Update()
   {
+    if (MovementInput.sqrMagnitude > 1.0f)
+    {
+      MovementInput.Normalize();
+    }
+
     if (MovementInput.y != 0)
     {
       var t = transform.localPosition;
-      t += transform.forward * MovementInput.y * Speed * Time.deltaTime;
+      t += transform.forward * MovementInput.y * (IsDashing ? DashSpeed : Speed) * Time.deltaTime;
       transform.localPosition = t;
     }
     if (MovementInput.x != 0)
     {
       var t = transform.localPosition;
-      t += transform.right * MovementInput.x * Speed * Time.deltaTime;
+      t += transform.right * MovementInput.x * (IsDashing ? DashSpeed : Speed) * Time.deltaTime;
       transform.localPosition = t;
     }
   }

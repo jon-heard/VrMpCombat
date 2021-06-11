@@ -137,25 +137,9 @@ public class @App_Input : IInputActionCollection, IDisposable
             ]
         },
         {
-            ""name"": ""VrInput"",
+            ""name"": ""Controls"",
             ""id"": ""937cba72-ae89-4aca-8a20-48ef186c134c"",
             ""actions"": [
-                {
-                    ""name"": ""PullBow"",
-                    ""type"": ""Button"",
-                    ""id"": ""511d0d41-ea40-4ab0-9c30-39e30740a03c"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Movement"",
-                    ""type"": ""Value"",
-                    ""id"": ""188da42c-f424-462e-b841-3d9ea4c92136"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
                 {
                     ""name"": ""Dash"",
                     ""type"": ""Button"",
@@ -165,10 +149,82 @@ public class @App_Input : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""RightThumb"",
+                    ""name"": ""Look_NonVr"",
+                    ""type"": ""Value"",
+                    ""id"": ""660e0630-5ef9-440e-b021-4c95a7346298"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Look_Vr"",
                     ""type"": ""Value"",
                     ""id"": ""a10942c5-3fc0-4e7d-977e-8c92acb8f133"",
                     ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Movement_Vr"",
+                    ""type"": ""Value"",
+                    ""id"": ""188da42c-f424-462e-b841-3d9ea4c92136"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Movement_Forward"",
+                    ""type"": ""Button"",
+                    ""id"": ""86eedf7b-4c58-4585-ba47-7345d2bf3228"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Movement_Strafe_Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""89e7f53b-c66d-4f7b-a03a-2c173b0ead04"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Movement_Backward"",
+                    ""type"": ""Button"",
+                    ""id"": ""36fda522-fa9f-4eac-9e4e-a1bdf08cabee"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Movement_Strafe_Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""421bbe6b-8da9-416b-a084-a88546226ad8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""PullBow"",
+                    ""type"": ""Button"",
+                    ""id"": ""17aa075a-0912-45a4-b135-e90d4ed253f0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""c4230c7e-c5f2-4e33-a598-49a661353e9d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MouseLookEnable"",
+                    ""type"": ""Button"",
+                    ""id"": ""51faf3a0-5bce-4b31-836a-24adac1d872f"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -176,34 +232,23 @@ public class @App_Input : IInputActionCollection, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""18d04955-30ba-4aea-ba44-5a8d21e5b5a6"",
-                    ""path"": ""<XRController>{LeftHand}/triggerPressed"",
+                    ""id"": ""cdadaf9c-459f-4c3e-b866-1b7d6a239e39"",
+                    ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""PullBow"",
+                    ""action"": ""Movement_Backward"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""f1218889-d9bd-4a75-a6e4-21a34e482550"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""id"": ""62292788-6b34-4c4e-83e5-3792d79beb4f"",
+                    ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""PullBow"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a2a51509-71df-4036-a5b4-2ae34a85a32b"",
-                    ""path"": ""<XRController>{LeftHand}/thumbstick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""Look_NonVr"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -231,77 +276,40 @@ public class @App_Input : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""25af9202-b9bf-4310-b174-3b3e9bbe6ed7"",
-                    ""path"": ""<XRController>{RightHand}/thumbstick"",
+                    ""id"": ""a2a51509-71df-4036-a5b4-2ae34a85a32b"",
+                    ""path"": ""<XRController>{LeftHand}/thumbstick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RightThumb"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""Input"",
-            ""id"": ""0d5a9afe-73df-4ca6-8f2b-7bfb8c2e0cf2"",
-            ""actions"": [
-                {
-                    ""name"": ""Movement_Forward"",
-                    ""type"": ""Button"",
-                    ""id"": ""e84b7550-dee2-452d-a622-dc021594c0b0"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Movement_Strafe_Right"",
-                    ""type"": ""Button"",
-                    ""id"": ""12855027-229e-4f1e-887b-f34a99eb04b5"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Movement_Backward"",
-                    ""type"": ""Button"",
-                    ""id"": ""3f7a36e9-e6db-423e-b3f0-dac05f93d5ac"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Movement_Strafe_Left"",
-                    ""type"": ""Button"",
-                    ""id"": ""f6f9be93-4f63-4a7f-af9d-b7df09e49d6a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Look"",
-                    ""type"": ""Value"",
-                    ""id"": ""35943677-1604-4c84-9e65-995fb889cbe4"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""f86dd7cb-bac5-46b1-be1f-6b25df5fc5b7"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement_Forward"",
+                    ""action"": ""Movement_Vr"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""0bf3d939-86de-4750-a073-97dc4c673402"",
+                    ""id"": ""7741b84d-2adb-4822-a8cb-b8353ed71ff7"",
+                    ""path"": ""<XRController>{LeftHand}/triggerPressed"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PullBow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d280422a-93f7-4ed6-a5cd-f48522a348aa"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""154587f9-eac6-41aa-9f30-64f7295a3259"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -312,19 +320,8 @@ public class @App_Input : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""43354654-1417-40bc-8c86-18db9e20279a"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement_Backward"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""728ea9d5-397a-4bfc-8462-aa52c34840b2"",
-                    ""path"": ""<SwitchProControllerHID>/buttonEast"",
+                    ""id"": ""fd22446f-9828-4068-9805-9dae194515ff"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -334,12 +331,45 @@ public class @App_Input : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e8a63e02-5092-4877-a865-c3193321a6ed"",
-                    ""path"": ""<Mouse>/delta"",
+                    ""id"": ""58974400-6512-41cc-8bfb-fdb6f7b273c3"",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Look"",
+                    ""action"": ""Movement_Forward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""702c7e8e-a0d8-40fa-9987-27b256d9e4b3"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseLookEnable"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f1218889-d9bd-4a75-a6e4-21a34e482550"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PullBow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""25af9202-b9bf-4310-b174-3b3e9bbe6ed7"",
+                    ""path"": ""<XRController>{RightHand}/thumbstick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look_Vr"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -356,19 +386,19 @@ public class @App_Input : IInputActionCollection, IDisposable
         m_Vr_Transforms_Hand_Left_Rotation = m_Vr_Transforms.FindAction("Hand_Left_Rotation", throwIfNotFound: true);
         m_Vr_Transforms_Hand_Right_Position = m_Vr_Transforms.FindAction("Hand_Right_Position", throwIfNotFound: true);
         m_Vr_Transforms_Hand_Right_Rotation = m_Vr_Transforms.FindAction("Hand_Right_Rotation", throwIfNotFound: true);
-        // VrInput
-        m_VrInput = asset.FindActionMap("VrInput", throwIfNotFound: true);
-        m_VrInput_PullBow = m_VrInput.FindAction("PullBow", throwIfNotFound: true);
-        m_VrInput_Movement = m_VrInput.FindAction("Movement", throwIfNotFound: true);
-        m_VrInput_Dash = m_VrInput.FindAction("Dash", throwIfNotFound: true);
-        m_VrInput_RightThumb = m_VrInput.FindAction("RightThumb", throwIfNotFound: true);
-        // Input
-        m_Input = asset.FindActionMap("Input", throwIfNotFound: true);
-        m_Input_Movement_Forward = m_Input.FindAction("Movement_Forward", throwIfNotFound: true);
-        m_Input_Movement_Strafe_Right = m_Input.FindAction("Movement_Strafe_Right", throwIfNotFound: true);
-        m_Input_Movement_Backward = m_Input.FindAction("Movement_Backward", throwIfNotFound: true);
-        m_Input_Movement_Strafe_Left = m_Input.FindAction("Movement_Strafe_Left", throwIfNotFound: true);
-        m_Input_Look = m_Input.FindAction("Look", throwIfNotFound: true);
+        // Controls
+        m_Controls = asset.FindActionMap("Controls", throwIfNotFound: true);
+        m_Controls_Dash = m_Controls.FindAction("Dash", throwIfNotFound: true);
+        m_Controls_Look_NonVr = m_Controls.FindAction("Look_NonVr", throwIfNotFound: true);
+        m_Controls_Look_Vr = m_Controls.FindAction("Look_Vr", throwIfNotFound: true);
+        m_Controls_Movement_Vr = m_Controls.FindAction("Movement_Vr", throwIfNotFound: true);
+        m_Controls_Movement_Forward = m_Controls.FindAction("Movement_Forward", throwIfNotFound: true);
+        m_Controls_Movement_Strafe_Right = m_Controls.FindAction("Movement_Strafe_Right", throwIfNotFound: true);
+        m_Controls_Movement_Backward = m_Controls.FindAction("Movement_Backward", throwIfNotFound: true);
+        m_Controls_Movement_Strafe_Left = m_Controls.FindAction("Movement_Strafe_Left", throwIfNotFound: true);
+        m_Controls_PullBow = m_Controls.FindAction("PullBow", throwIfNotFound: true);
+        m_Controls_Pause = m_Controls.FindAction("Pause", throwIfNotFound: true);
+        m_Controls_MouseLookEnable = m_Controls.FindAction("MouseLookEnable", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -488,108 +518,93 @@ public class @App_Input : IInputActionCollection, IDisposable
     }
     public Vr_TransformsActions @Vr_Transforms => new Vr_TransformsActions(this);
 
-    // VrInput
-    private readonly InputActionMap m_VrInput;
-    private IVrInputActions m_VrInputActionsCallbackInterface;
-    private readonly InputAction m_VrInput_PullBow;
-    private readonly InputAction m_VrInput_Movement;
-    private readonly InputAction m_VrInput_Dash;
-    private readonly InputAction m_VrInput_RightThumb;
-    public struct VrInputActions
+    // Controls
+    private readonly InputActionMap m_Controls;
+    private IControlsActions m_ControlsActionsCallbackInterface;
+    private readonly InputAction m_Controls_Dash;
+    private readonly InputAction m_Controls_Look_NonVr;
+    private readonly InputAction m_Controls_Look_Vr;
+    private readonly InputAction m_Controls_Movement_Vr;
+    private readonly InputAction m_Controls_Movement_Forward;
+    private readonly InputAction m_Controls_Movement_Strafe_Right;
+    private readonly InputAction m_Controls_Movement_Backward;
+    private readonly InputAction m_Controls_Movement_Strafe_Left;
+    private readonly InputAction m_Controls_PullBow;
+    private readonly InputAction m_Controls_Pause;
+    private readonly InputAction m_Controls_MouseLookEnable;
+    public struct ControlsActions
     {
         private @App_Input m_Wrapper;
-        public VrInputActions(@App_Input wrapper) { m_Wrapper = wrapper; }
-        public InputAction @PullBow => m_Wrapper.m_VrInput_PullBow;
-        public InputAction @Movement => m_Wrapper.m_VrInput_Movement;
-        public InputAction @Dash => m_Wrapper.m_VrInput_Dash;
-        public InputAction @RightThumb => m_Wrapper.m_VrInput_RightThumb;
-        public InputActionMap Get() { return m_Wrapper.m_VrInput; }
+        public ControlsActions(@App_Input wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Dash => m_Wrapper.m_Controls_Dash;
+        public InputAction @Look_NonVr => m_Wrapper.m_Controls_Look_NonVr;
+        public InputAction @Look_Vr => m_Wrapper.m_Controls_Look_Vr;
+        public InputAction @Movement_Vr => m_Wrapper.m_Controls_Movement_Vr;
+        public InputAction @Movement_Forward => m_Wrapper.m_Controls_Movement_Forward;
+        public InputAction @Movement_Strafe_Right => m_Wrapper.m_Controls_Movement_Strafe_Right;
+        public InputAction @Movement_Backward => m_Wrapper.m_Controls_Movement_Backward;
+        public InputAction @Movement_Strafe_Left => m_Wrapper.m_Controls_Movement_Strafe_Left;
+        public InputAction @PullBow => m_Wrapper.m_Controls_PullBow;
+        public InputAction @Pause => m_Wrapper.m_Controls_Pause;
+        public InputAction @MouseLookEnable => m_Wrapper.m_Controls_MouseLookEnable;
+        public InputActionMap Get() { return m_Wrapper.m_Controls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(VrInputActions set) { return set.Get(); }
-        public void SetCallbacks(IVrInputActions instance)
+        public static implicit operator InputActionMap(ControlsActions set) { return set.Get(); }
+        public void SetCallbacks(IControlsActions instance)
         {
-            if (m_Wrapper.m_VrInputActionsCallbackInterface != null)
+            if (m_Wrapper.m_ControlsActionsCallbackInterface != null)
             {
-                @PullBow.started -= m_Wrapper.m_VrInputActionsCallbackInterface.OnPullBow;
-                @PullBow.performed -= m_Wrapper.m_VrInputActionsCallbackInterface.OnPullBow;
-                @PullBow.canceled -= m_Wrapper.m_VrInputActionsCallbackInterface.OnPullBow;
-                @Movement.started -= m_Wrapper.m_VrInputActionsCallbackInterface.OnMovement;
-                @Movement.performed -= m_Wrapper.m_VrInputActionsCallbackInterface.OnMovement;
-                @Movement.canceled -= m_Wrapper.m_VrInputActionsCallbackInterface.OnMovement;
-                @Dash.started -= m_Wrapper.m_VrInputActionsCallbackInterface.OnDash;
-                @Dash.performed -= m_Wrapper.m_VrInputActionsCallbackInterface.OnDash;
-                @Dash.canceled -= m_Wrapper.m_VrInputActionsCallbackInterface.OnDash;
-                @RightThumb.started -= m_Wrapper.m_VrInputActionsCallbackInterface.OnRightThumb;
-                @RightThumb.performed -= m_Wrapper.m_VrInputActionsCallbackInterface.OnRightThumb;
-                @RightThumb.canceled -= m_Wrapper.m_VrInputActionsCallbackInterface.OnRightThumb;
+                @Dash.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnDash;
+                @Dash.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnDash;
+                @Dash.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnDash;
+                @Look_NonVr.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnLook_NonVr;
+                @Look_NonVr.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnLook_NonVr;
+                @Look_NonVr.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnLook_NonVr;
+                @Look_Vr.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnLook_Vr;
+                @Look_Vr.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnLook_Vr;
+                @Look_Vr.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnLook_Vr;
+                @Movement_Vr.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMovement_Vr;
+                @Movement_Vr.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMovement_Vr;
+                @Movement_Vr.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMovement_Vr;
+                @Movement_Forward.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMovement_Forward;
+                @Movement_Forward.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMovement_Forward;
+                @Movement_Forward.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMovement_Forward;
+                @Movement_Strafe_Right.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMovement_Strafe_Right;
+                @Movement_Strafe_Right.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMovement_Strafe_Right;
+                @Movement_Strafe_Right.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMovement_Strafe_Right;
+                @Movement_Backward.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMovement_Backward;
+                @Movement_Backward.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMovement_Backward;
+                @Movement_Backward.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMovement_Backward;
+                @Movement_Strafe_Left.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMovement_Strafe_Left;
+                @Movement_Strafe_Left.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMovement_Strafe_Left;
+                @Movement_Strafe_Left.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMovement_Strafe_Left;
+                @PullBow.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPullBow;
+                @PullBow.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPullBow;
+                @PullBow.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPullBow;
+                @Pause.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPause;
+                @MouseLookEnable.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMouseLookEnable;
+                @MouseLookEnable.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMouseLookEnable;
+                @MouseLookEnable.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMouseLookEnable;
             }
-            m_Wrapper.m_VrInputActionsCallbackInterface = instance;
+            m_Wrapper.m_ControlsActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @PullBow.started += instance.OnPullBow;
-                @PullBow.performed += instance.OnPullBow;
-                @PullBow.canceled += instance.OnPullBow;
-                @Movement.started += instance.OnMovement;
-                @Movement.performed += instance.OnMovement;
-                @Movement.canceled += instance.OnMovement;
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
-                @RightThumb.started += instance.OnRightThumb;
-                @RightThumb.performed += instance.OnRightThumb;
-                @RightThumb.canceled += instance.OnRightThumb;
-            }
-        }
-    }
-    public VrInputActions @VrInput => new VrInputActions(this);
-
-    // Input
-    private readonly InputActionMap m_Input;
-    private IInputActions m_InputActionsCallbackInterface;
-    private readonly InputAction m_Input_Movement_Forward;
-    private readonly InputAction m_Input_Movement_Strafe_Right;
-    private readonly InputAction m_Input_Movement_Backward;
-    private readonly InputAction m_Input_Movement_Strafe_Left;
-    private readonly InputAction m_Input_Look;
-    public struct InputActions
-    {
-        private @App_Input m_Wrapper;
-        public InputActions(@App_Input wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Movement_Forward => m_Wrapper.m_Input_Movement_Forward;
-        public InputAction @Movement_Strafe_Right => m_Wrapper.m_Input_Movement_Strafe_Right;
-        public InputAction @Movement_Backward => m_Wrapper.m_Input_Movement_Backward;
-        public InputAction @Movement_Strafe_Left => m_Wrapper.m_Input_Movement_Strafe_Left;
-        public InputAction @Look => m_Wrapper.m_Input_Look;
-        public InputActionMap Get() { return m_Wrapper.m_Input; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(InputActions set) { return set.Get(); }
-        public void SetCallbacks(IInputActions instance)
-        {
-            if (m_Wrapper.m_InputActionsCallbackInterface != null)
-            {
-                @Movement_Forward.started -= m_Wrapper.m_InputActionsCallbackInterface.OnMovement_Forward;
-                @Movement_Forward.performed -= m_Wrapper.m_InputActionsCallbackInterface.OnMovement_Forward;
-                @Movement_Forward.canceled -= m_Wrapper.m_InputActionsCallbackInterface.OnMovement_Forward;
-                @Movement_Strafe_Right.started -= m_Wrapper.m_InputActionsCallbackInterface.OnMovement_Strafe_Right;
-                @Movement_Strafe_Right.performed -= m_Wrapper.m_InputActionsCallbackInterface.OnMovement_Strafe_Right;
-                @Movement_Strafe_Right.canceled -= m_Wrapper.m_InputActionsCallbackInterface.OnMovement_Strafe_Right;
-                @Movement_Backward.started -= m_Wrapper.m_InputActionsCallbackInterface.OnMovement_Backward;
-                @Movement_Backward.performed -= m_Wrapper.m_InputActionsCallbackInterface.OnMovement_Backward;
-                @Movement_Backward.canceled -= m_Wrapper.m_InputActionsCallbackInterface.OnMovement_Backward;
-                @Movement_Strafe_Left.started -= m_Wrapper.m_InputActionsCallbackInterface.OnMovement_Strafe_Left;
-                @Movement_Strafe_Left.performed -= m_Wrapper.m_InputActionsCallbackInterface.OnMovement_Strafe_Left;
-                @Movement_Strafe_Left.canceled -= m_Wrapper.m_InputActionsCallbackInterface.OnMovement_Strafe_Left;
-                @Look.started -= m_Wrapper.m_InputActionsCallbackInterface.OnLook;
-                @Look.performed -= m_Wrapper.m_InputActionsCallbackInterface.OnLook;
-                @Look.canceled -= m_Wrapper.m_InputActionsCallbackInterface.OnLook;
-            }
-            m_Wrapper.m_InputActionsCallbackInterface = instance;
-            if (instance != null)
-            {
+                @Look_NonVr.started += instance.OnLook_NonVr;
+                @Look_NonVr.performed += instance.OnLook_NonVr;
+                @Look_NonVr.canceled += instance.OnLook_NonVr;
+                @Look_Vr.started += instance.OnLook_Vr;
+                @Look_Vr.performed += instance.OnLook_Vr;
+                @Look_Vr.canceled += instance.OnLook_Vr;
+                @Movement_Vr.started += instance.OnMovement_Vr;
+                @Movement_Vr.performed += instance.OnMovement_Vr;
+                @Movement_Vr.canceled += instance.OnMovement_Vr;
                 @Movement_Forward.started += instance.OnMovement_Forward;
                 @Movement_Forward.performed += instance.OnMovement_Forward;
                 @Movement_Forward.canceled += instance.OnMovement_Forward;
@@ -602,13 +617,19 @@ public class @App_Input : IInputActionCollection, IDisposable
                 @Movement_Strafe_Left.started += instance.OnMovement_Strafe_Left;
                 @Movement_Strafe_Left.performed += instance.OnMovement_Strafe_Left;
                 @Movement_Strafe_Left.canceled += instance.OnMovement_Strafe_Left;
-                @Look.started += instance.OnLook;
-                @Look.performed += instance.OnLook;
-                @Look.canceled += instance.OnLook;
+                @PullBow.started += instance.OnPullBow;
+                @PullBow.performed += instance.OnPullBow;
+                @PullBow.canceled += instance.OnPullBow;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
+                @MouseLookEnable.started += instance.OnMouseLookEnable;
+                @MouseLookEnable.performed += instance.OnMouseLookEnable;
+                @MouseLookEnable.canceled += instance.OnMouseLookEnable;
             }
         }
     }
-    public InputActions @Input => new InputActions(this);
+    public ControlsActions @Controls => new ControlsActions(this);
     public interface IVr_TransformsActions
     {
         void OnHead_Position(InputAction.CallbackContext context);
@@ -618,19 +639,18 @@ public class @App_Input : IInputActionCollection, IDisposable
         void OnHand_Right_Position(InputAction.CallbackContext context);
         void OnHand_Right_Rotation(InputAction.CallbackContext context);
     }
-    public interface IVrInputActions
+    public interface IControlsActions
     {
-        void OnPullBow(InputAction.CallbackContext context);
-        void OnMovement(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
-        void OnRightThumb(InputAction.CallbackContext context);
-    }
-    public interface IInputActions
-    {
+        void OnLook_NonVr(InputAction.CallbackContext context);
+        void OnLook_Vr(InputAction.CallbackContext context);
+        void OnMovement_Vr(InputAction.CallbackContext context);
         void OnMovement_Forward(InputAction.CallbackContext context);
         void OnMovement_Strafe_Right(InputAction.CallbackContext context);
         void OnMovement_Backward(InputAction.CallbackContext context);
         void OnMovement_Strafe_Left(InputAction.CallbackContext context);
-        void OnLook(InputAction.CallbackContext context);
+        void OnPullBow(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
+        void OnMouseLookEnable(InputAction.CallbackContext context);
     }
 }

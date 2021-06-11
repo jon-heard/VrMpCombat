@@ -11,7 +11,6 @@ public class ArrowStrike : MonoBehaviour
   private void OnTriggerEnter(Collider other)
   {
     if (ToIgnore.Contains(other)) { return; }
-    Debug.Log("Arrow hit: " + other.name);
     var landed = GameObject.Instantiate(ArrowLandedPrefab, transform.parent.parent);
     landed.localPosition = transform.parent.localPosition;
     landed.localRotation = transform.parent.localRotation;
