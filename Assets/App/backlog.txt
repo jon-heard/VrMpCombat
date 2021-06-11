@@ -1,4 +1,4 @@
-- add to github
+- make it playable outside of ui
 - add multiplayer
 - Why does arrow jitter at bow on full pull
 - hands flicker a lot sometimes (openxr only?)

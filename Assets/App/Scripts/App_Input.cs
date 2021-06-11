@@ -171,62 +171,6 @@ public class @App_Input : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
-                },
-                {
-                    ""name"": ""RotateFist_y_down"",
-                    ""type"": ""Button"",
-                    ""id"": ""c1472e0a-07b4-4915-8c37-5e66fbad3f49"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""RotateFist_y_up"",
-                    ""type"": ""Button"",
-                    ""id"": ""4dd05059-0d1c-4d25-9fc2-08ace6470cae"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""RotateFist_x_down"",
-                    ""type"": ""Button"",
-                    ""id"": ""83d1e205-cead-4a53-9a36-7fee390852fc"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""RotateFist_x_up"",
-                    ""type"": ""Button"",
-                    ""id"": ""af8a9fc5-8f6a-4eb6-8d84-4b9e5064fcb0"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""RotateFist_z_down"",
-                    ""type"": ""Button"",
-                    ""id"": ""ab4b7315-cbf5-41bb-95d2-bf56ea4c57e6"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""RotateFist_z_up"",
-                    ""type"": ""Button"",
-                    ""id"": ""0455285d-d098-4ade-a2bd-6ac0a2ab02ea"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""ChangeRotationFocus"",
-                    ""type"": ""Button"",
-                    ""id"": ""b307fd5f-31ca-43c2-a3a9-ccae2ebae706"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -293,83 +237,6 @@ public class @App_Input : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""RightThumb"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e123e628-4f2f-46b8-9d7d-1467fa3ce8d0"",
-                    ""path"": ""<XRController>{LeftHand}/primaryButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RotateFist_y_down"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2201127e-63c7-4c1f-b2b3-fbb9467dae44"",
-                    ""path"": ""<XRController>{LeftHand}/secondaryButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RotateFist_y_up"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4a958c5a-4683-4cda-a290-9d4b10547dfc"",
-                    ""path"": ""<XRController>{RightHand}/primaryButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RotateFist_x_down"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5cf73d43-acc2-4c75-a0fb-95ecf323e923"",
-                    ""path"": ""<XRController>{RightHand}/secondaryButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RotateFist_x_up"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""aa0395e4-b681-4dba-b271-471f233e94e6"",
-                    ""path"": ""<XRController>{LeftHand}/gripPressed"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RotateFist_z_down"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ef41d5ee-9597-4ae2-a6e4-245bc2a8d3fb"",
-                    ""path"": ""<XRController>{RightHand}/gripPressed"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RotateFist_z_up"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8c96454a-fb29-4961-b782-7b3c05baf84c"",
-                    ""path"": ""<XRController>{RightHand}/triggerPressed"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChangeRotationFocus"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -495,13 +362,6 @@ public class @App_Input : IInputActionCollection, IDisposable
         m_VrInput_Movement = m_VrInput.FindAction("Movement", throwIfNotFound: true);
         m_VrInput_Dash = m_VrInput.FindAction("Dash", throwIfNotFound: true);
         m_VrInput_RightThumb = m_VrInput.FindAction("RightThumb", throwIfNotFound: true);
-        m_VrInput_RotateFist_y_down = m_VrInput.FindAction("RotateFist_y_down", throwIfNotFound: true);
-        m_VrInput_RotateFist_y_up = m_VrInput.FindAction("RotateFist_y_up", throwIfNotFound: true);
-        m_VrInput_RotateFist_x_down = m_VrInput.FindAction("RotateFist_x_down", throwIfNotFound: true);
-        m_VrInput_RotateFist_x_up = m_VrInput.FindAction("RotateFist_x_up", throwIfNotFound: true);
-        m_VrInput_RotateFist_z_down = m_VrInput.FindAction("RotateFist_z_down", throwIfNotFound: true);
-        m_VrInput_RotateFist_z_up = m_VrInput.FindAction("RotateFist_z_up", throwIfNotFound: true);
-        m_VrInput_ChangeRotationFocus = m_VrInput.FindAction("ChangeRotationFocus", throwIfNotFound: true);
         // Input
         m_Input = asset.FindActionMap("Input", throwIfNotFound: true);
         m_Input_Movement_Forward = m_Input.FindAction("Movement_Forward", throwIfNotFound: true);
@@ -635,13 +495,6 @@ public class @App_Input : IInputActionCollection, IDisposable
     private readonly InputAction m_VrInput_Movement;
     private readonly InputAction m_VrInput_Dash;
     private readonly InputAction m_VrInput_RightThumb;
-    private readonly InputAction m_VrInput_RotateFist_y_down;
-    private readonly InputAction m_VrInput_RotateFist_y_up;
-    private readonly InputAction m_VrInput_RotateFist_x_down;
-    private readonly InputAction m_VrInput_RotateFist_x_up;
-    private readonly InputAction m_VrInput_RotateFist_z_down;
-    private readonly InputAction m_VrInput_RotateFist_z_up;
-    private readonly InputAction m_VrInput_ChangeRotationFocus;
     public struct VrInputActions
     {
         private @App_Input m_Wrapper;
@@ -650,13 +503,6 @@ public class @App_Input : IInputActionCollection, IDisposable
         public InputAction @Movement => m_Wrapper.m_VrInput_Movement;
         public InputAction @Dash => m_Wrapper.m_VrInput_Dash;
         public InputAction @RightThumb => m_Wrapper.m_VrInput_RightThumb;
-        public InputAction @RotateFist_y_down => m_Wrapper.m_VrInput_RotateFist_y_down;
-        public InputAction @RotateFist_y_up => m_Wrapper.m_VrInput_RotateFist_y_up;
-        public InputAction @RotateFist_x_down => m_Wrapper.m_VrInput_RotateFist_x_down;
-        public InputAction @RotateFist_x_up => m_Wrapper.m_VrInput_RotateFist_x_up;
-        public InputAction @RotateFist_z_down => m_Wrapper.m_VrInput_RotateFist_z_down;
-        public InputAction @RotateFist_z_up => m_Wrapper.m_VrInput_RotateFist_z_up;
-        public InputAction @ChangeRotationFocus => m_Wrapper.m_VrInput_ChangeRotationFocus;
         public InputActionMap Get() { return m_Wrapper.m_VrInput; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -678,27 +524,6 @@ public class @App_Input : IInputActionCollection, IDisposable
                 @RightThumb.started -= m_Wrapper.m_VrInputActionsCallbackInterface.OnRightThumb;
                 @RightThumb.performed -= m_Wrapper.m_VrInputActionsCallbackInterface.OnRightThumb;
                 @RightThumb.canceled -= m_Wrapper.m_VrInputActionsCallbackInterface.OnRightThumb;
-                @RotateFist_y_down.started -= m_Wrapper.m_VrInputActionsCallbackInterface.OnRotateFist_y_down;
-                @RotateFist_y_down.performed -= m_Wrapper.m_VrInputActionsCallbackInterface.OnRotateFist_y_down;
-                @RotateFist_y_down.canceled -= m_Wrapper.m_VrInputActionsCallbackInterface.OnRotateFist_y_down;
-                @RotateFist_y_up.started -= m_Wrapper.m_VrInputActionsCallbackInterface.OnRotateFist_y_up;
-                @RotateFist_y_up.performed -= m_Wrapper.m_VrInputActionsCallbackInterface.OnRotateFist_y_up;
-                @RotateFist_y_up.canceled -= m_Wrapper.m_VrInputActionsCallbackInterface.OnRotateFist_y_up;
-                @RotateFist_x_down.started -= m_Wrapper.m_VrInputActionsCallbackInterface.OnRotateFist_x_down;
-                @RotateFist_x_down.performed -= m_Wrapper.m_VrInputActionsCallbackInterface.OnRotateFist_x_down;
-                @RotateFist_x_down.canceled -= m_Wrapper.m_VrInputActionsCallbackInterface.OnRotateFist_x_down;
-                @RotateFist_x_up.started -= m_Wrapper.m_VrInputActionsCallbackInterface.OnRotateFist_x_up;
-                @RotateFist_x_up.performed -= m_Wrapper.m_VrInputActionsCallbackInterface.OnRotateFist_x_up;
-                @RotateFist_x_up.canceled -= m_Wrapper.m_VrInputActionsCallbackInterface.OnRotateFist_x_up;
-                @RotateFist_z_down.started -= m_Wrapper.m_VrInputActionsCallbackInterface.OnRotateFist_z_down;
-                @RotateFist_z_down.performed -= m_Wrapper.m_VrInputActionsCallbackInterface.OnRotateFist_z_down;
-                @RotateFist_z_down.canceled -= m_Wrapper.m_VrInputActionsCallbackInterface.OnRotateFist_z_down;
-                @RotateFist_z_up.started -= m_Wrapper.m_VrInputActionsCallbackInterface.OnRotateFist_z_up;
-                @RotateFist_z_up.performed -= m_Wrapper.m_VrInputActionsCallbackInterface.OnRotateFist_z_up;
-                @RotateFist_z_up.canceled -= m_Wrapper.m_VrInputActionsCallbackInterface.OnRotateFist_z_up;
-                @ChangeRotationFocus.started -= m_Wrapper.m_VrInputActionsCallbackInterface.OnChangeRotationFocus;
-                @ChangeRotationFocus.performed -= m_Wrapper.m_VrInputActionsCallbackInterface.OnChangeRotationFocus;
-                @ChangeRotationFocus.canceled -= m_Wrapper.m_VrInputActionsCallbackInterface.OnChangeRotationFocus;
             }
             m_Wrapper.m_VrInputActionsCallbackInterface = instance;
             if (instance != null)
@@ -715,27 +540,6 @@ public class @App_Input : IInputActionCollection, IDisposable
                 @RightThumb.started += instance.OnRightThumb;
                 @RightThumb.performed += instance.OnRightThumb;
                 @RightThumb.canceled += instance.OnRightThumb;
-                @RotateFist_y_down.started += instance.OnRotateFist_y_down;
-                @RotateFist_y_down.performed += instance.OnRotateFist_y_down;
-                @RotateFist_y_down.canceled += instance.OnRotateFist_y_down;
-                @RotateFist_y_up.started += instance.OnRotateFist_y_up;
-                @RotateFist_y_up.performed += instance.OnRotateFist_y_up;
-                @RotateFist_y_up.canceled += instance.OnRotateFist_y_up;
-                @RotateFist_x_down.started += instance.OnRotateFist_x_down;
-                @RotateFist_x_down.performed += instance.OnRotateFist_x_down;
-                @RotateFist_x_down.canceled += instance.OnRotateFist_x_down;
-                @RotateFist_x_up.started += instance.OnRotateFist_x_up;
-                @RotateFist_x_up.performed += instance.OnRotateFist_x_up;
-                @RotateFist_x_up.canceled += instance.OnRotateFist_x_up;
-                @RotateFist_z_down.started += instance.OnRotateFist_z_down;
-                @RotateFist_z_down.performed += instance.OnRotateFist_z_down;
-                @RotateFist_z_down.canceled += instance.OnRotateFist_z_down;
-                @RotateFist_z_up.started += instance.OnRotateFist_z_up;
-                @RotateFist_z_up.performed += instance.OnRotateFist_z_up;
-                @RotateFist_z_up.canceled += instance.OnRotateFist_z_up;
-                @ChangeRotationFocus.started += instance.OnChangeRotationFocus;
-                @ChangeRotationFocus.performed += instance.OnChangeRotationFocus;
-                @ChangeRotationFocus.canceled += instance.OnChangeRotationFocus;
             }
         }
     }
@@ -820,13 +624,6 @@ public class @App_Input : IInputActionCollection, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnRightThumb(InputAction.CallbackContext context);
-        void OnRotateFist_y_down(InputAction.CallbackContext context);
-        void OnRotateFist_y_up(InputAction.CallbackContext context);
-        void OnRotateFist_x_down(InputAction.CallbackContext context);
-        void OnRotateFist_x_up(InputAction.CallbackContext context);
-        void OnRotateFist_z_down(InputAction.CallbackContext context);
-        void OnRotateFist_z_up(InputAction.CallbackContext context);
-        void OnChangeRotationFocus(InputAction.CallbackContext context);
     }
     public interface IInputActions
     {
