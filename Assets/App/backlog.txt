@@ -1,5 +1,3 @@
-- try moving vr tracking into fixedupdate
-	- hands flicker a lot sometimes (openxr only?)
 - add multiplayer
-- Why does arrow jitter at bow on full pull
-- add heart shape to font and use on bow
+- Why does arrow jitter at bow on full pull AND bow flashes at odd angle when pulling
+- get manual vr initialization working

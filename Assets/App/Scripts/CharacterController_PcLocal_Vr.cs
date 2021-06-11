@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
 
 public class CharacterController_PcLocal_Vr : CharacterController_PcLocal
@@ -26,9 +27,11 @@ public class CharacterController_PcLocal_Vr : CharacterController_PcLocal
 
     if (App_Details.Instance.IN_VR)
     {
-      Camera.onPreRender += OnPreRender;
+      InputSystem.onAfterUpdate += RefreshTracking;
       _input.Controls.PullBow.started += OnPullBow_Down;
       _input.Controls.PullBow.canceled += OnPullBow_Up;
+      _input.Controls.Dash.started += OnDash_Down;
+      _input.Controls.Dash.canceled += OnDash_Up;
       StartCoroutine(UpdateCoroutine());
     }
     else
@@ -39,6 +42,11 @@ public class CharacterController_PcLocal_Vr : CharacterController_PcLocal
 
     _baseHeadPosition = _character.Head.localPosition;
     _vrPositionOffset = _input.Vr_Transforms.Head_Position.ReadValue<Vector3>();
+  }
+
+  private void OnDestroy()
+  {
+    InputSystem.onAfterUpdate -= RefreshTracking;
   }
 
   private IEnumerator UpdateCoroutine()
@@ -79,16 +87,8 @@ public class CharacterController_PcLocal_Vr : CharacterController_PcLocal
     }
   }
 
-  private void OnDestroy()
+  private void RefreshTracking()
   {
-    Camera.onPreRender -= OnPreRender;
-  }
-
-  private void OnPreRender(Camera c)
-  {
-#if UNITY_EDITOR
-    if (!Application.isPlaying) { return; }
-#endif
     var posOffset = -_vrPositionOffset + (Application.isMobilePlatform ? _baseHeadPosition : Vector3.zero);
     _character.Head.localPosition = _input.Vr_Transforms.Head_Position.ReadValue<Vector3>() + posOffset;
     _character.Head.localRotation = _input.Vr_Transforms.Head_Rotation.ReadValue<Quaternion>();
@@ -106,8 +106,7 @@ public class CharacterController_PcLocal_Vr : CharacterController_PcLocal
       _character.IsPullingBow = true;
     }
   }
-  private void OnPullBow_Up(CallbackContext obj)
-  {
-    _character.IsPullingBow = false;
-  }
+  private void OnPullBow_Up(CallbackContext obj) { _character.IsPullingBow = false; }
+  private void OnDash_Down(CallbackContext obj) { _character.IsDashing = true; }
+  private void OnDash_Up(CallbackContext obj) { _character.IsDashing = false; }
 }

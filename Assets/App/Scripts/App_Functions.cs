@@ -24,13 +24,13 @@ public class App_Functions : Singleton<App_Functions>
   {
     if (App_Details.Instance.IN_VR)
     {
-      StartCoroutine(StartVr());
+      //StartCoroutine(StartVr());
     }
   }
 
   private void OnDestroy()
   {
-    if (_vrStarted) { StopVr(); }
+    //if (_vrStarted) { StopVr(); }
   }
 
   private IEnumerator StartVr()

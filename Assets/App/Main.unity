@@ -289,7 +289,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_TargetEye: 0
+  m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
@@ -1507,7 +1507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d4ecc0d343646647a116b060e4a6b12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IN_VR: 0
+  IN_VR: 1
   MAX_DISTANCE_TRIGGER_BOWPULL: 0.575
   MAX_DISTANCE_BOWPULL: 0.95
   MIN_DISTANCE_ARROWRELEASE: 0.45
