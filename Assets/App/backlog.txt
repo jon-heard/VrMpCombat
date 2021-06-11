@@ -1,0 +1,6 @@
+- add to github
+- add multiplayer
+- Why does arrow jitter at bow on full pull
+- hands flicker a lot sometimes (openxr only?)
+- fix arrow hit animation (only need one, but should die out a BIT more slowly)
+- add heart shape to font and use on bow
