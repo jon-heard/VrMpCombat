@@ -1,0 +1,25 @@
+¡	\xa1	arrow (missile) right
+¢	\xa2	heart
+£	\xa3	
+¤	\xa4	
+¥	\xa5	
+¦	\xa6	
+§	\xa7	
+¨	\xa8	
+©	\xa9	
+ª	\xaa	
+«	\xab	
+¬	\xac	
+®	\xae	
+¯	\xaf	
+°	\xb0	
+±	\xb1	
+²	\xb2	
+³	\xb3	
+´	\xb4	
+µ	\xb5	
+¶	\xb6	
+·	\xb7	
+¸	\xb8	
+¹	\xb9	
+º	\xba	
