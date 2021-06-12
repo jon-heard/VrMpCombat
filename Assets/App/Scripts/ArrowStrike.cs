@@ -1,3 +1,4 @@
+using Mirror;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,7 @@ public class ArrowStrike : MonoBehaviour
   public Transform Base;
   public Collider MyCollider;
 
-  [NonSerialized] public List<Collider> ToIgnore;
+  [NonSerialized] public Character SourceCharacter;
 
   private float _arrowLength;
 
@@ -20,7 +21,9 @@ public class ArrowStrike : MonoBehaviour
 
   private void OnTriggerEnter(Collider other)
   {
-    if (ToIgnore != null && ToIgnore.Contains(other)) { return; }
+    if (!transform.parent.GetComponent<NetworkIdentity>().hasAuthority) { return; }
+
+    if (SourceCharacter.Colliders.Contains(other)) { return; }
     // Find where the arrow actually landed
     var hit = new RaycastHit();
     MyCollider.enabled = false;
@@ -32,6 +35,7 @@ public class ArrowStrike : MonoBehaviour
     landed.localPosition = transform.parent.localPosition - Base.forward * distanceAdjust;
     landed.localRotation = transform.parent.localRotation;
     App_Functions.Instance.ArrowInstances.Add(landed.gameObject);
+    NetworkServer.Spawn(landed.gameObject, NetworkServer.localConnection);
     // Notify target that it has been shot
     other.GetComponent<HitReactor>()?.OnHit(HitReactor.HitType.Arrow, landed.gameObject);
     // Finish

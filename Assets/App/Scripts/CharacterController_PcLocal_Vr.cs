@@ -24,6 +24,7 @@ public class CharacterController_PcLocal_Vr : CharacterController_PcLocal
   protected override void Start()
   {
     base.Start();
+    if (!enabled) { return; }
 
     if (App_Details.Instance.IN_VR)
     {
@@ -37,7 +38,9 @@ public class CharacterController_PcLocal_Vr : CharacterController_PcLocal
     else
     {
       enabled = false;
+#if UNITY_EDITOR
       StartCoroutine(UpdateCoroutine_SimulatedVr());
+#endif
     }
 
     _baseHeadPosition = _character.Head.localPosition;
@@ -68,10 +71,12 @@ public class CharacterController_PcLocal_Vr : CharacterController_PcLocal
     }
   }
 
+#if UNITY_EDITOR
   private IEnumerator UpdateCoroutine_SimulatedVr()
   {
     while (true)
     {
+      yield return new WaitUntil(() => { return enabled; });
       _character.MovementInput = new Vector2(LeftThumbX, LeftThumbY);
       var rightThumbX = RightThumbX;
       var newRightThumbXState = rightThumbX > 0.5f ? 1 : rightThumbX < -0.5f ? -1 : 0;
@@ -86,6 +91,7 @@ public class CharacterController_PcLocal_Vr : CharacterController_PcLocal
       yield return null;
     }
   }
+#endif
 
   private void RefreshTracking()
   {

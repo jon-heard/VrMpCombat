@@ -200,7 +200,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Pause",
+                    "name": "PauseToggle",
                     "type": "Button",
                     "id": "c4230c7e-c5f2-4e33-a598-49a661353e9d",
                     "expectedControlType": "Button",
@@ -286,11 +286,11 @@
                 {
                     "name": "",
                     "id": "d280422a-93f7-4ed6-a5cd-f48522a348aa",
-                    "path": "<Keyboard>/escape",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Pause",
+                    "action": "PauseToggle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

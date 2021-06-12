@@ -1,3 +1,4 @@
+using Mirror;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,11 +9,9 @@ public class Bow : MonoBehaviour
   [SerializeField] private Transform OtherHand;
   [SerializeField] private LineRenderer[] Lines;
   [SerializeField] private Transform ArrowPulled;
-  [SerializeField] private ArrowFlight ArrowPrefab;
-  [SerializeField] private Transform ArrowCollection;
+  [SerializeField] private NetSpawner Spawner;
 
   [NonSerialized] public bool IsPulling = false;
-  [NonSerialized] public List<Collider> ToIgnore;
 
   private Quaternion _defaultRotation;
   private bool _prevIsPulling = false;
@@ -53,16 +52,12 @@ public class Bow : MonoBehaviour
         var pullDistance = (BowHand.position - OtherHand.parent.position).magnitude;
         if (pullDistance > _minDistanceArrowRelease)
         {
-          var arrow = GameObject.Instantiate(ArrowPrefab, ArrowCollection);
-          arrow.transform.position = ArrowPulled.position + ArrowPulled.forward * _newArrowOffset;
-          var pullDistanceOverPullRange =
+          var arrowForward = ArrowPulled.forward;
+          var arrowPosition = ArrowPulled.position + arrowForward * _newArrowOffset;
+          var pullAmount =
             (pullDistance - _minDistanceArrowRelease) /
             (_maxDistanceBowPull - _minDistanceArrowRelease);
-          arrow.Velocity =
-            ArrowPulled.forward *
-            Mathf.Lerp(App_Details.Instance.ARROW_VELOCITY_MIN, App_Details.Instance.ARROW_VELOCITY_MAX, pullDistanceOverPullRange);
-          arrow.transform.forward = arrow.Velocity.normalized;
-          arrow.MyArrowStrike.ToIgnore = ToIgnore;
+          Spawner.CmdSpawnFlyingArrow(arrowPosition, arrowForward, pullAmount);
         }
         // Reset everything
         ArrowPulled.gameObject.SetActive(false);

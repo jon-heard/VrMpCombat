@@ -1,9 +1,10 @@
+using Mirror;
 using System;
 using UnityEngine;
 
 public class ArrowFlight : MonoBehaviour
 {
-  public ArrowStrike MyArrowStrike; // Used by "Bow" to tell arrow to ignore the hand shooting it
+  public ArrowStrike MyArrowStrike;
   [NonSerialized] public Vector3 Velocity;
 
   private float _gravity;
@@ -14,6 +15,8 @@ public class ArrowFlight : MonoBehaviour
   {
     _gravity = App_Details.Instance.GRAVITY;
     _destructionDepth = App_Details.Instance.ARROW_DESTRUCTION_DEPTH;
+
+    if (!GetComponent<NetworkIdentity>().hasAuthority) { enabled = false; }
   }
 
   private void FixedUpdate()

@@ -6,7 +6,7 @@ public class Character : MonoBehaviour
 {
   [Header("Stats")]
   public float Speed = 2.0f;
-  public float DashSpeed = 4.0f;
+  public float DashSpeed = 6.0f;
   [Header("Body parts")]
   public Transform Head;
   public Transform Head_UpDown;
@@ -18,6 +18,8 @@ public class Character : MonoBehaviour
 
   [NonSerialized] public Vector2 MovementInput;
   [NonSerialized] public bool IsDashing;
+
+  public List<Collider> Colliders { get; private set; }
 
   public bool IsPullingBow
   {
@@ -44,31 +46,26 @@ public class Character : MonoBehaviour
   {
     _ControllerTurnAmount = App_Details.Instance.CONTROLLER_TURN_AMOUNT;
 
-    // Setup Ignore list for arrows to not contact characters body
-    if (MyBow)
+    Colliders = new List<Collider>();
+    foreach (Transform t in Head)
     {
-      var toIgnore = new List<Collider>();
-      foreach (Transform t in Head)
-      {
-        var c = t.GetComponent<Collider>();
-        if (c) { toIgnore.Add(c); }
-      }
-      foreach (Transform t in Hand_Left)
-      {
-        var c = t.GetComponent<Collider>();
-        if (c) { toIgnore.Add(c); }
-      }
-      foreach (Transform t in Hand_Right)
-      {
-        var c = t.GetComponent<Collider>();
-        if (c) { toIgnore.Add(c); }
-      }
-      foreach (Transform t in Body)
-      {
-        var c = t.GetComponent<Collider>();
-        if (c) { toIgnore.Add(c); }
-      }
-      MyBow.ToIgnore = toIgnore;
+      var c = t.GetComponent<Collider>();
+      if (c) { Colliders.Add(c); }
+    }
+    foreach (Transform t in Hand_Left)
+    {
+      var c = t.GetComponent<Collider>();
+      if (c) { Colliders.Add(c); }
+    }
+    foreach (Transform t in Hand_Right)
+    {
+      var c = t.GetComponent<Collider>();
+      if (c) { Colliders.Add(c); }
+    }
+    foreach (Transform t in Body)
+    {
+      var c = t.GetComponent<Collider>();
+      if (c) { Colliders.Add(c); }
     }
   }
 

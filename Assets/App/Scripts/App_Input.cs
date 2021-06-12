@@ -213,7 +213,7 @@ public class @App_Input : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Pause"",
+                    ""name"": ""PauseToggle"",
                     ""type"": ""Button"",
                     ""id"": ""c4230c7e-c5f2-4e33-a598-49a661353e9d"",
                     ""expectedControlType"": ""Button"",
@@ -299,11 +299,11 @@ public class @App_Input : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d280422a-93f7-4ed6-a5cd-f48522a348aa"",
-                    ""path"": ""<Keyboard>/escape"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Pause"",
+                    ""action"": ""PauseToggle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -397,7 +397,7 @@ public class @App_Input : IInputActionCollection, IDisposable
         m_Controls_Movement_Backward = m_Controls.FindAction("Movement_Backward", throwIfNotFound: true);
         m_Controls_Movement_Strafe_Left = m_Controls.FindAction("Movement_Strafe_Left", throwIfNotFound: true);
         m_Controls_PullBow = m_Controls.FindAction("PullBow", throwIfNotFound: true);
-        m_Controls_Pause = m_Controls.FindAction("Pause", throwIfNotFound: true);
+        m_Controls_PauseToggle = m_Controls.FindAction("PauseToggle", throwIfNotFound: true);
         m_Controls_MouseLookEnable = m_Controls.FindAction("MouseLookEnable", throwIfNotFound: true);
     }
 
@@ -530,7 +530,7 @@ public class @App_Input : IInputActionCollection, IDisposable
     private readonly InputAction m_Controls_Movement_Backward;
     private readonly InputAction m_Controls_Movement_Strafe_Left;
     private readonly InputAction m_Controls_PullBow;
-    private readonly InputAction m_Controls_Pause;
+    private readonly InputAction m_Controls_PauseToggle;
     private readonly InputAction m_Controls_MouseLookEnable;
     public struct ControlsActions
     {
@@ -545,7 +545,7 @@ public class @App_Input : IInputActionCollection, IDisposable
         public InputAction @Movement_Backward => m_Wrapper.m_Controls_Movement_Backward;
         public InputAction @Movement_Strafe_Left => m_Wrapper.m_Controls_Movement_Strafe_Left;
         public InputAction @PullBow => m_Wrapper.m_Controls_PullBow;
-        public InputAction @Pause => m_Wrapper.m_Controls_Pause;
+        public InputAction @PauseToggle => m_Wrapper.m_Controls_PauseToggle;
         public InputAction @MouseLookEnable => m_Wrapper.m_Controls_MouseLookEnable;
         public InputActionMap Get() { return m_Wrapper.m_Controls; }
         public void Enable() { Get().Enable(); }
@@ -583,9 +583,9 @@ public class @App_Input : IInputActionCollection, IDisposable
                 @PullBow.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPullBow;
                 @PullBow.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPullBow;
                 @PullBow.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPullBow;
-                @Pause.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPause;
-                @Pause.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPause;
-                @Pause.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPause;
+                @PauseToggle.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPauseToggle;
+                @PauseToggle.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPauseToggle;
+                @PauseToggle.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPauseToggle;
                 @MouseLookEnable.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMouseLookEnable;
                 @MouseLookEnable.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMouseLookEnable;
                 @MouseLookEnable.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMouseLookEnable;
@@ -620,9 +620,9 @@ public class @App_Input : IInputActionCollection, IDisposable
                 @PullBow.started += instance.OnPullBow;
                 @PullBow.performed += instance.OnPullBow;
                 @PullBow.canceled += instance.OnPullBow;
-                @Pause.started += instance.OnPause;
-                @Pause.performed += instance.OnPause;
-                @Pause.canceled += instance.OnPause;
+                @PauseToggle.started += instance.OnPauseToggle;
+                @PauseToggle.performed += instance.OnPauseToggle;
+                @PauseToggle.canceled += instance.OnPauseToggle;
                 @MouseLookEnable.started += instance.OnMouseLookEnable;
                 @MouseLookEnable.performed += instance.OnMouseLookEnable;
                 @MouseLookEnable.canceled += instance.OnMouseLookEnable;
@@ -650,7 +650,7 @@ public class @App_Input : IInputActionCollection, IDisposable
         void OnMovement_Backward(InputAction.CallbackContext context);
         void OnMovement_Strafe_Left(InputAction.CallbackContext context);
         void OnPullBow(InputAction.CallbackContext context);
-        void OnPause(InputAction.CallbackContext context);
+        void OnPauseToggle(InputAction.CallbackContext context);
         void OnMouseLookEnable(InputAction.CallbackContext context);
     }
 }

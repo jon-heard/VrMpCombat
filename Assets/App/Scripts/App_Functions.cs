@@ -1,9 +1,9 @@
+using Mirror;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Management;
-using static UnityEngine.InputSystem.InputAction;
 
 public class App_Functions : Singleton<App_Functions>
 {

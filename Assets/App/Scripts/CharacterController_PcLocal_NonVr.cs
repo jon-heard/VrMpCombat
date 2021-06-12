@@ -21,6 +21,7 @@ public class CharacterController_PcLocal_NonVr : CharacterController_PcLocal
   protected override void Start()
   {
     base.Start();
+    if (!enabled) { return; }
 
     if (!App_Details.Instance.IN_VR)
     {
@@ -40,8 +41,9 @@ public class CharacterController_PcLocal_NonVr : CharacterController_PcLocal
       _input.Controls.MouseLookEnable.canceled += OnMouseLookEnabled_Up;
       _leftHandDefaultPosition = _character.Hand_Left.localPosition;
       _rightHandDefaultPosition = _character.Hand_Right.localPosition;
-      _input.Controls.Pause.performed += onPause;
-      Cursor.lockState = CursorLockMode.Locked;
+      _input.Controls.PauseToggle.performed += onPauseToggled;
+      _paused = true;
+      onPauseToggled(new CallbackContext());
     }
     else
     {
@@ -49,10 +51,17 @@ public class CharacterController_PcLocal_NonVr : CharacterController_PcLocal
     }
   }
 
-  private void onPause(CallbackContext obj)
+  private void onPauseToggled(CallbackContext obj)
   {
-    Cursor.lockState = CursorLockMode.None;
-    _paused = true;
+    _paused = !_paused;
+    if (_paused)
+    {
+      Cursor.lockState = CursorLockMode.None;
+    }
+    else
+    {
+      Cursor.lockState = CursorLockMode.Locked;
+    }
   }
 
   private void Update()
@@ -160,21 +169,15 @@ public class CharacterController_PcLocal_NonVr : CharacterController_PcLocal
   }
   private void OnPullBow_Down(CallbackContext obj)
   {
-    if (!_paused)
-    {
-      _character.IsPullingBow = true;
-      var headHeight = _character.Head.localPosition.y;
-      _character.Hand_Left.localPosition = LeftHandPullPosition;
-      _character.Hand_Right.localPosition = RightHandPullPosition;
-    }
-    else
-    {
-      _paused = false;
-      Cursor.lockState = CursorLockMode.Locked;
-    }
+    if (_paused) { return; }
+    _character.IsPullingBow = true;
+    var headHeight = _character.Head.localPosition.y;
+    _character.Hand_Left.localPosition = LeftHandPullPosition;
+    _character.Hand_Right.localPosition = RightHandPullPosition;
   }
   private void OnPullBow_Up(CallbackContext obj)
   {
+    if (_paused) { return; }
     _character.IsPullingBow = false;
     _character.Hand_Left.localPosition = _leftHandDefaultPosition;
     _character.Hand_Right.localPosition = _rightHandDefaultPosition;
