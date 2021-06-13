@@ -1,6 +1,5 @@
 - add teleport arrow
 	- remove dash
-- taking damage shows red faded flash
 - bow needs to be drawn back on all clients of network
 - landed arrow removes animation component when animation is done
 

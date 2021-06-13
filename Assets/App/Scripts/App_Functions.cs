@@ -9,6 +9,7 @@ public class App_Functions : Singleton<App_Functions>
 {
   [SerializeField] private bool BeHost = true;
   [SerializeField] private string HostIP = "192.168.0.16";
+  [SerializeField] private Animation DamageOverlay;
 
   [NonSerialized] public List<GameObject> ArrowInstances = new List<GameObject>();
 
@@ -19,6 +20,12 @@ public class App_Functions : Singleton<App_Functions>
       GameObject.Destroy(instance);
     }
     ArrowInstances.Clear();
+  }
+
+  public void FlashDamageOverlay()
+  {
+    DamageOverlay.Rewind();
+    DamageOverlay.Play();
   }
 
   private bool _vrStarted = false;

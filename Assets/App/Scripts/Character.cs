@@ -31,7 +31,19 @@ public class Character : MonoBehaviour
     set
     {
       if (value == _hitpoints) { return; }
-      _hitpoints = Mathf.Clamp(value, 0, MaxHitpoints);
+      if (_isLocalPc)
+      {
+        var newHitpoints = Mathf.Clamp(value, 0, MaxHitpoints);
+        if (newHitpoints < Hitpoints)
+        {
+          App_Functions.Instance.FlashDamageOverlay();
+        }
+        _hitpoints = newHitpoints;
+      }
+      else
+      {
+         _hitpoints = Mathf.Clamp(value, 0, MaxHitpoints);
+      }
       StartingHitpoints = value;
       if (MyBow) { MyBow.HitpointValues = new Vector2Int(Hitpoints, MaxHitpoints); }
     }
@@ -60,9 +72,12 @@ public class Character : MonoBehaviour
   }
 
   private float _ControllerTurnAmount;
+  private bool _isLocalPc;
 
   private void Start()
   {
+    var netIdentity = GetComponent<NetworkIdentity>();
+
     _ControllerTurnAmount = App_Details.Instance.CONTROLLER_TURN_AMOUNT;
 
     Colliders = new List<Collider>();
@@ -90,7 +105,7 @@ public class Character : MonoBehaviour
     Hitpoints = StartingHitpoints;
 
     // Allow for up to ~10000 nonnetworked (preassigned) HitReactors and ~429k networked objects
-    var reactorIdOffset = (GetComponent<NetworkIdentity>().netId + 1) * 10000;
+    var reactorIdOffset = (netIdentity.netId + 1) * 10000;
     for (uint i = 0; i < HitReactors.Length; i++)
     {
       if (HitReactors[i].ReactorId == 0)
@@ -98,6 +113,8 @@ public class Character : MonoBehaviour
         HitReactors[i].ReactorId = i + reactorIdOffset;
       }
     }
+
+    _isLocalPc = (NetworkClient.localPlayer == netIdentity);
   }
 
   private void Update()
