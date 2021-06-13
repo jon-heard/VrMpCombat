@@ -1,10 +1,10 @@
-- have arrows stick to body parts
-- have damage float up from arrow stickings
-- test multiplayer between quest and pc
-
 - add teleport arrow
 	- remove dash
+- taking damage shows red faded flash
+- bow needs to be drawn back on all clients of network
 - landed arrow removes animation component when animation is done
 
-- Why does arrow jitter at bow on full pull AND bow flashes at odd angle when pulling
 - get manual vr initialization working
+- make vr friendly login ui (with option for vr)
+
+- Why does arrow jitter at bow on full pull AND bow flashes at odd angle when pulling

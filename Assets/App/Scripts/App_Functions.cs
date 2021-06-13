@@ -7,6 +7,9 @@ using UnityEngine.XR.Management;
 
 public class App_Functions : Singleton<App_Functions>
 {
+  [SerializeField] private bool BeHost = true;
+  [SerializeField] private string HostIP = "192.168.0.16";
+
   [NonSerialized] public List<GameObject> ArrowInstances = new List<GameObject>();
 
   public void ClearArrows()
@@ -26,6 +29,9 @@ public class App_Functions : Singleton<App_Functions>
     {
       //StartCoroutine(StartVr());
     }
+    var net = GetComponent<NetworkManager>();
+    net.networkAddress = HostIP;
+    if (BeHost) { net.StartHost(); } else { net.StartClient(); }
   }
 
   private void OnDestroy()

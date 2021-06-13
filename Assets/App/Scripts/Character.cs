@@ -1,3 +1,4 @@
+using Mirror;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,19 +6,37 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
   [Header("Stats")]
+  public int StartingHitpoints = 7;
+  public int MaxHitpoints = 10;
   public float Speed = 2.0f;
   public float DashSpeed = 6.0f;
   [Header("Body parts")]
+  public HitReactor[] HitReactors;
   public Transform Head;
   public Transform Head_UpDown;
   public Transform Hand_Left;
   public Transform Hand_Right;
   public Transform Body;
+  [Header("System")]
+  public CharacterRpcs Rpcs;
   [Header("Held")]
   public Bow MyBow;
 
   [NonSerialized] public Vector2 MovementInput;
   [NonSerialized] public bool IsDashing;
+
+  public int Hitpoints
+  {
+    get { return _hitpoints; }
+    set
+    {
+      if (value == _hitpoints) { return; }
+      _hitpoints = Mathf.Clamp(value, 0, MaxHitpoints);
+      StartingHitpoints = value;
+      if (MyBow) { MyBow.HitpointValues = new Vector2Int(Hitpoints, MaxHitpoints); }
+    }
+  }
+  private int _hitpoints = 0;
 
   public List<Collider> Colliders { get; private set; }
 
@@ -66,6 +85,18 @@ public class Character : MonoBehaviour
     {
       var c = t.GetComponent<Collider>();
       if (c) { Colliders.Add(c); }
+    }
+
+    Hitpoints = StartingHitpoints;
+
+    // Allow for up to ~10000 nonnetworked (preassigned) HitReactors and ~429k networked objects
+    var reactorIdOffset = (GetComponent<NetworkIdentity>().netId + 1) * 10000;
+    for (uint i = 0; i < HitReactors.Length; i++)
+    {
+      if (HitReactors[i].ReactorId == 0)
+      {
+        HitReactors[i].ReactorId = i + reactorIdOffset;
+      }
     }
   }
 

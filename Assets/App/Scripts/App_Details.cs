@@ -10,4 +10,6 @@ public class App_Details : Singleton<App_Details>
   public float ARROW_VELOCITY_MAX = 0.8f;
   public float ARROW_DESTRUCTION_DEPTH = -10.0f;
   public float CONTROLLER_TURN_AMOUNT = 15.0f;
+  public string COLOR_HITPOINT_DISPLAY = "1e1b14";
+  public string COLOR_HITPOINT_DISPLAY_EMPTY = "260303";
 }

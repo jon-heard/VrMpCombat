@@ -5,13 +5,35 @@ using UnityEngine;
 
 public class Bow : MonoBehaviour
 {
-  [SerializeField] private Transform BowHand;
-  [SerializeField] private Transform OtherHand;
-  [SerializeField] private LineRenderer[] Lines;
-  [SerializeField] private Transform ArrowPulled;
-  [SerializeField] private NetSpawner Spawner;
+  [SerializeField] private Transform _bowHand;
+  [SerializeField] private Transform _otherHand;
+  [SerializeField] private LineRenderer[] _lines;
+  [SerializeField] private Transform _arrowPulled;
+  [SerializeField] private Character _character;
+  [SerializeField] private TextMesh _hitpointDisplay;
 
   [NonSerialized] public bool IsPulling = false;
+
+  public Vector2Int HitpointValues
+  {
+    get { return _hitpointValues; }
+    set
+    {
+      if (value == _hitpointValues) { return; }
+      _hitpointValues = value;
+      var hpColor = App_Details.Instance.COLOR_HITPOINT_DISPLAY;
+      var hpEmptyColor = App_Details.Instance.COLOR_HITPOINT_DISPLAY_EMPTY;
+      var _hitpointDisplayText = "";
+      for (var i = 0; i < _hitpointValues.y; i++)
+      {
+        var color = (i < _hitpointValues.x) ? hpEmptyColor : hpColor;
+        _hitpointDisplayText =
+          "<color=#" + color  + ">¢</color>" + (i > 0 ? "\n" : "") + _hitpointDisplayText;
+      }
+      _hitpointDisplay.text = _hitpointDisplayText;
+    }
+  }
+  private Vector2Int _hitpointValues;
 
   private Quaternion _defaultRotation;
   private bool _prevIsPulling = false;
@@ -28,14 +50,14 @@ public class Bow : MonoBehaviour
     _maxDistanceBowPull = App_Details.Instance.MAX_DISTANCE_BOWPULL;
     _maxDistanceBowPullSquared = Mathf.Pow(_maxDistanceBowPull, 2);
     _minDistanceArrowRelease = App_Details.Instance.MIN_DISTANCE_ARROWRELEASE;
-    _newArrowOffset = ArrowPulled.GetChild(0).localPosition.z;
-    ArrowPulled.gameObject.SetActive(false);
-    _initialLinePositions = new Vector3[Lines.Length];
-    for (var i = 0; i < Lines.Length; i++)
+    _newArrowOffset = _arrowPulled.GetChild(0).localPosition.z;
+    _arrowPulled.gameObject.SetActive(false);
+    _initialLinePositions = new Vector3[_lines.Length];
+    for (var i = 0; i < _lines.Length; i++)
     {
-      _initialLinePositions[i] = Lines[i].GetPosition(1);
+      _initialLinePositions[i] = _lines[i].GetPosition(1);
     }
-    _otherHandDefaultPosition = OtherHand.localPosition;
+    _otherHandDefaultPosition = _otherHand.localPosition;
   }
 
   private void Update()
@@ -44,28 +66,28 @@ public class Bow : MonoBehaviour
     {
       if (IsPulling)
       {
-        ArrowPulled.gameObject.SetActive(true);
+        _arrowPulled.gameObject.SetActive(true);
       }
       else
       {
         // Shoot arrow
-        var pullDistance = (BowHand.position - OtherHand.parent.position).magnitude;
+        var pullDistance = (_bowHand.position - _otherHand.parent.position).magnitude;
         if (pullDistance > _minDistanceArrowRelease)
         {
-          var arrowForward = ArrowPulled.forward;
-          var arrowPosition = ArrowPulled.position + arrowForward * _newArrowOffset;
+          var arrowForward = _arrowPulled.forward;
+          var arrowPosition = _arrowPulled.position + arrowForward * _newArrowOffset;
           var pullAmount =
             (pullDistance - _minDistanceArrowRelease) /
             (_maxDistanceBowPull - _minDistanceArrowRelease);
-          Spawner.CmdSpawnFlyingArrow(arrowPosition, arrowForward, pullAmount);
+          _character.Rpcs.CmdSpawnFlyingArrow(arrowPosition, arrowForward, pullAmount);
         }
         // Reset everything
-        ArrowPulled.gameObject.SetActive(false);
+        _arrowPulled.gameObject.SetActive(false);
         transform.localRotation = _defaultRotation;
-        OtherHand.localPosition = _otherHandDefaultPosition;
-        for (var i = 0; i < Lines.Length; i++)
+        _otherHand.localPosition = _otherHandDefaultPosition;
+        for (var i = 0; i < _lines.Length; i++)
         {
-          Lines[i].SetPosition(1, _initialLinePositions[i]);
+          _lines[i].SetPosition(1, _initialLinePositions[i]);
         }
       }
       _prevIsPulling = IsPulling;
@@ -73,19 +95,19 @@ public class Bow : MonoBehaviour
 
     if (IsPulling)
     {
-      transform.LookAt(OtherHand);
-      ArrowPulled.LookAt(BowHand);
-      foreach (var line in Lines)
+      transform.LookAt(_otherHand);
+      _arrowPulled.LookAt(_bowHand);
+      foreach (var line in _lines)
       {
-        line.SetPosition(1, line.transform.InverseTransformPoint(OtherHand.position));
+        line.SetPosition(1, line.transform.InverseTransformPoint(_otherHand.position));
       }
-      var handDifference = (BowHand.position - OtherHand.parent.position);
+      var handDifference = (_bowHand.position - _otherHand.parent.position);
       if (handDifference.sqrMagnitude > _maxDistanceBowPullSquared)
       {
-        OtherHand.position = BowHand.position - handDifference.normalized * _maxDistanceBowPull;
-        var t = OtherHand.localPosition;
+        _otherHand.position = _bowHand.position - handDifference.normalized * _maxDistanceBowPull;
+        var t = _otherHand.localPosition;
         t += _otherHandDefaultPosition;
-        OtherHand.localPosition = t;
+        _otherHand.localPosition = t;
       }
     }
   }
