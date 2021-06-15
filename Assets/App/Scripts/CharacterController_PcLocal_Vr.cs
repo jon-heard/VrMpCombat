@@ -107,7 +107,7 @@ public class CharacterController_PcLocal_Vr : CharacterController_PcLocal
   private void OnPullBow_Down(CallbackContext obj)
   {
     if ((_character.Hand_Left.position - _character.Hand_Right.position).sqrMagnitude <=
-          _maxDistanceTriggerBowPullSquared)
+          _const_maxDistanceTriggerBowPullSquared)
     {
       _character.IsPullingBow = true;
     }

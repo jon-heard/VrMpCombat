@@ -21,12 +21,12 @@ public class Bow : MonoBehaviour
     {
       if (value == _hitpointValues) { return; }
       _hitpointValues = value;
-      var hpColor = App_Details.Instance.COLOR_HITPOINT_DISPLAY;
-      var hpEmptyColor = App_Details.Instance.COLOR_HITPOINT_DISPLAY_EMPTY;
+      var const_hpColor = App_Details.Instance.COLOR_HITPOINT_DISPLAY;
+      var const_hpEmptyColor = App_Details.Instance.COLOR_HITPOINT_DISPLAY_EMPTY;
       var _hitpointDisplayText = "";
       for (var i = 0; i < _hitpointValues.y; i++)
       {
-        var color = (i < _hitpointValues.x) ? hpEmptyColor : hpColor;
+        var color = (i < _hitpointValues.x) ? const_hpEmptyColor : const_hpColor;
         _hitpointDisplayText =
           "<color=#" + color  + ">¢</color>" + (i > 0 ? "\n" : "") + _hitpointDisplayText;
       }
@@ -38,18 +38,18 @@ public class Bow : MonoBehaviour
   private Quaternion _defaultRotation;
   private bool _prevIsPulling = false;
   private float _newArrowOffset;
-  private float _maxDistanceBowPull;
-  private float _maxDistanceBowPullSquared;
-  private float _minDistanceArrowRelease;
+  private float _const_maxDistanceBowPull;
+  private float _const_maxDistanceBowPullSquared;
+  private float _const_minDistanceArrowRelease;
   private Vector3[] _initialLinePositions;
   private Vector3 _otherHandDefaultPosition;
 
   private void Start()
   {
     _defaultRotation = transform.localRotation;
-    _maxDistanceBowPull = App_Details.Instance.MAX_DISTANCE_BOWPULL;
-    _maxDistanceBowPullSquared = Mathf.Pow(_maxDistanceBowPull, 2);
-    _minDistanceArrowRelease = App_Details.Instance.MIN_DISTANCE_ARROWRELEASE;
+    _const_maxDistanceBowPull = App_Details.Instance.MAX_DISTANCE_BOWPULL;
+    _const_maxDistanceBowPullSquared = Mathf.Pow(_const_maxDistanceBowPull, 2);
+    _const_minDistanceArrowRelease = App_Details.Instance.MIN_DISTANCE_ARROWRELEASE;
     _newArrowOffset = _arrowPulled.GetChild(0).localPosition.z;
     _arrowPulled.gameObject.SetActive(false);
     _initialLinePositions = new Vector3[_lines.Length];
@@ -72,13 +72,13 @@ public class Bow : MonoBehaviour
       {
         // Shoot arrow
         var pullDistance = (_bowHand.position - _otherHand.parent.position).magnitude;
-        if (pullDistance > _minDistanceArrowRelease)
+        if (pullDistance > _const_minDistanceArrowRelease)
         {
           var arrowForward = _arrowPulled.forward;
           var arrowPosition = _arrowPulled.position + arrowForward * _newArrowOffset;
           var pullAmount =
-            (pullDistance - _minDistanceArrowRelease) /
-            (_maxDistanceBowPull - _minDistanceArrowRelease);
+            (pullDistance - _const_minDistanceArrowRelease) /
+            (_const_maxDistanceBowPull - _const_minDistanceArrowRelease);
           _character.Cmd_SpawnArrow(arrowPosition, arrowForward, pullAmount);
         }
         // Reset everything
@@ -102,9 +102,9 @@ public class Bow : MonoBehaviour
         line.SetPosition(1, line.transform.InverseTransformPoint(_otherHand.position));
       }
       var handDifference = (_bowHand.position - _otherHand.parent.position);
-      if (handDifference.sqrMagnitude > _maxDistanceBowPullSquared)
+      if (handDifference.sqrMagnitude > _const_maxDistanceBowPullSquared)
       {
-        _otherHand.position = _bowHand.position - handDifference.normalized * _maxDistanceBowPull;
+        _otherHand.position = _bowHand.position - handDifference.normalized * _const_maxDistanceBowPull;
         var t = _otherHand.localPosition;
         t += _otherHandDefaultPosition;
         _otherHand.localPosition = t;

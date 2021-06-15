@@ -4,7 +4,7 @@ using UnityEngine;
 public class CharacterController_PcLocal : CharacterController
 {
   protected App_Input _input;
-  protected float _maxDistanceTriggerBowPullSquared;
+  protected float _const_maxDistanceTriggerBowPullSquared;
 
   protected override void Start()
   {
@@ -12,7 +12,7 @@ public class CharacterController_PcLocal : CharacterController
     _input = new App_Input();
     _input.Enable();
 
-    _maxDistanceTriggerBowPullSquared =
+    _const_maxDistanceTriggerBowPullSquared =
       Mathf.Pow(App_Details.Instance.MAX_DISTANCE_TRIGGER_BOWPULL, 2);
   }
 }

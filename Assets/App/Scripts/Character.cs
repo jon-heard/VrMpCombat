@@ -67,7 +67,7 @@ public class Character : NetworkBehaviour
   public void Turn(bool left)
   {
     var t = transform.localEulerAngles;
-    t.y += _ControllerTurnAmount * (left ? 1.0f : -1.0f);
+    t.y += _const_ControllerTurnAmount * (left ? 1.0f : -1.0f);
     transform.localEulerAngles = t;
   }
 
@@ -87,12 +87,12 @@ public class Character : NetworkBehaviour
     arrow.Rpc_OnArrowCreated(velocity);
   }
 
-  private float _ControllerTurnAmount;
+  private float _const_ControllerTurnAmount;
   private bool _isLocalPc;
 
   private void Start()
   {
-    _ControllerTurnAmount = App_Details.Instance.CONTROLLER_TURN_AMOUNT;
+    _const_ControllerTurnAmount = App_Details.Instance.CONTROLLER_TURN_AMOUNT;
     Colliders = new List<Collider>();
     var bodyParts = new Transform[] { Head, Hand_Left, Hand_Right, Body };
     foreach (var bodyPart in bodyParts)
