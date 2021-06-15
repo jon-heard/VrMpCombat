@@ -1409,14 +1409,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &4586696970193294898
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3044058077948393567}
-  m_Enabled: 1
 --- !u!1001 &7507997219945930788
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1626,6 +1618,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4760138783611607163, guid: 90911b67cfc23884e86d1748e18cdf3f, type: 3}
   m_PrefabInstance: {fileID: 7507997219945930788}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &6726124573907528136 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3847830107401472492, guid: 90911b67cfc23884e86d1748e18cdf3f, type: 3}
+  m_PrefabInstance: {fileID: 7507997219945930788}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6990150974153492052 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 663087939650741872, guid: 90911b67cfc23884e86d1748e18cdf3f, type: 3}
@@ -1647,8 +1644,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ac4b1addaf64745bf2dace2680e888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &6726124573907528136 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3847830107401472492, guid: 90911b67cfc23884e86d1748e18cdf3f, type: 3}
-  m_PrefabInstance: {fileID: 7507997219945930788}
-  m_PrefabAsset: {fileID: 0}

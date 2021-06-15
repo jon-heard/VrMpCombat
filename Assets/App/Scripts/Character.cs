@@ -3,13 +3,13 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public class Character : NetworkBehaviour
 {
   [Header("Stats")]
-  public int StartingHitpoints = 7;
-  public int MaxHitpoints = 10;
-  public float Speed = 2.0f;
-  public float DashSpeed = 6.0f;
+  [SerializeField] private int _startingHitpoints = 7;
+  [SerializeField] private int _maxHitpoints = 10;
+  [SerializeField] private float _speed = 2.0f;
+  [SerializeField] private float _dashSpeed = 6.0f;
   [Header("Body parts")]
   public HitReactor[] HitReactors;
   public Transform Head;
@@ -18,9 +18,9 @@ public class Character : MonoBehaviour
   public Transform Hand_Right;
   public Transform Body;
   [Header("System")]
-  public CharacterRpcs Rpcs;
+  [SerializeField] private Arrow _arrowPrefab;
   [Header("Held")]
-  public Bow MyBow;
+  [SerializeField] private Bow _myBow;
 
   [NonSerialized] public Vector2 MovementInput;
   [NonSerialized] public bool IsDashing;
@@ -33,7 +33,7 @@ public class Character : MonoBehaviour
       if (value == _hitpoints) { return; }
       if (_isLocalPc)
       {
-        var newHitpoints = Mathf.Clamp(value, 0, MaxHitpoints);
+        var newHitpoints = Mathf.Clamp(value, 0, _maxHitpoints);
         if (newHitpoints < Hitpoints)
         {
           App_Functions.Instance.FlashDamageOverlay();
@@ -42,10 +42,10 @@ public class Character : MonoBehaviour
       }
       else
       {
-         _hitpoints = Mathf.Clamp(value, 0, MaxHitpoints);
+         _hitpoints = Mathf.Clamp(value, 0, _maxHitpoints);
       }
-      StartingHitpoints = value;
-      if (MyBow) { MyBow.HitpointValues = new Vector2Int(Hitpoints, MaxHitpoints); }
+      _startingHitpoints = value;
+      if (_myBow) { _myBow.HitpointValues = new Vector2Int(Hitpoints, _maxHitpoints); }
     }
   }
   private int _hitpoints = 0;
@@ -59,7 +59,7 @@ public class Character : MonoBehaviour
     {
       if (value == _isPullingBow) { return; }
       _isPullingBow = value;
-      MyBow.IsPulling = _isPullingBow;
+      _myBow.IsPulling = _isPullingBow;
     }
   }
   private bool _isPullingBow;
@@ -71,41 +71,47 @@ public class Character : MonoBehaviour
     transform.localEulerAngles = t;
   }
 
+  [Command]
+  public void Cmd_SpawnArrow(Vector3 position, Vector3 forward, float pullAmount)
+  {
+    var arrow = Instantiate(_arrowPrefab);
+    arrow.transform.position = position;
+    arrow.transform.forward = forward;
+    arrow.SourceCharacter = this;
+    NetworkServer.Spawn(arrow.gameObject, NetworkServer.localConnection);
+    var velocity = forward *
+      Mathf.Lerp(
+        App_Details.Instance.ARROW_SPEED_MIN,
+        App_Details.Instance.ARROW_SPEED_MAX,
+        pullAmount);
+    arrow.Rpc_OnArrowCreated(velocity);
+  }
+
   private float _ControllerTurnAmount;
   private bool _isLocalPc;
 
   private void Start()
   {
-    var netIdentity = GetComponent<NetworkIdentity>();
-
     _ControllerTurnAmount = App_Details.Instance.CONTROLLER_TURN_AMOUNT;
-
     Colliders = new List<Collider>();
-    foreach (Transform t in Head)
+    var bodyParts = new Transform[] { Head, Hand_Left, Hand_Right, Body };
+    foreach (var bodyPart in bodyParts)
     {
-      var c = t.GetComponent<Collider>();
-      if (c) { Colliders.Add(c); }
+      foreach (Transform t in bodyPart)
+      {
+        var c = t.GetComponent<Collider>();
+        if (c) { Colliders.Add(c); }
+      }
     }
-    foreach (Transform t in Hand_Left)
-    {
-      var c = t.GetComponent<Collider>();
-      if (c) { Colliders.Add(c); }
-    }
-    foreach (Transform t in Hand_Right)
-    {
-      var c = t.GetComponent<Collider>();
-      if (c) { Colliders.Add(c); }
-    }
-    foreach (Transform t in Body)
-    {
-      var c = t.GetComponent<Collider>();
-      if (c) { Colliders.Add(c); }
-    }
+    Hitpoints = _startingHitpoints;
+    _isLocalPc = (NetworkClient.localPlayer == GetComponent<NetworkIdentity>());
+    App_Functions.Instance.NetManager.AddListener_OnConnected(OnConnected);
+  }
 
-    Hitpoints = StartingHitpoints;
-
+  private void OnConnected()
+  {
     // Allow for up to ~10000 nonnetworked (preassigned) HitReactors and ~429k networked objects
-    var reactorIdOffset = (netIdentity.netId + 1) * 10000;
+    var reactorIdOffset = (GetComponent<NetworkIdentity>().netId + 1) * 10000;
     for (uint i = 0; i < HitReactors.Length; i++)
     {
       if (HitReactors[i].ReactorId == 0)
@@ -113,8 +119,6 @@ public class Character : MonoBehaviour
         HitReactors[i].ReactorId = i + reactorIdOffset;
       }
     }
-
-    _isLocalPc = (NetworkClient.localPlayer == netIdentity);
   }
 
   private void Update()
@@ -127,13 +131,13 @@ public class Character : MonoBehaviour
     if (MovementInput.y != 0)
     {
       var t = transform.localPosition;
-      t += transform.forward * MovementInput.y * (IsDashing ? DashSpeed : Speed) * Time.deltaTime;
+      t += transform.forward * MovementInput.y * (IsDashing ? _dashSpeed : _speed) * Time.deltaTime;
       transform.localPosition = t;
     }
     if (MovementInput.x != 0)
     {
       var t = transform.localPosition;
-      t += transform.right * MovementInput.x * (IsDashing ? DashSpeed : Speed) * Time.deltaTime;
+      t += transform.right * MovementInput.x * (IsDashing ? _dashSpeed : _speed) * Time.deltaTime;
       transform.localPosition = t;
     }
   }

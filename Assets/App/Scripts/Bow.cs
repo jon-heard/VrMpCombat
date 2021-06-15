@@ -79,7 +79,7 @@ public class Bow : MonoBehaviour
           var pullAmount =
             (pullDistance - _minDistanceArrowRelease) /
             (_maxDistanceBowPull - _minDistanceArrowRelease);
-          _character.Rpcs.CmdSpawnFlyingArrow(arrowPosition, arrowForward, pullAmount);
+          _character.Cmd_SpawnArrow(arrowPosition, arrowForward, pullAmount);
         }
         // Reset everything
         _arrowPulled.gameObject.SetActive(false);

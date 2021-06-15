@@ -1,9 +1,11 @@
+- all copies of AppDetails have form _const_***
+
 - add teleport arrow
 	- remove dash
 - bow needs to be drawn back on all clients of network
-- landed arrow removes animation component when animation is done
 
 - get manual vr initialization working
 - make vr friendly login ui (with option for vr)
+	- three net options: client, distributed host or central host - along with description when selected
 
 - Why does arrow jitter at bow on full pull AND bow flashes at odd angle when pulling

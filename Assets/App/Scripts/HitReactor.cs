@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -38,10 +39,22 @@ public class HitReactor : MonoBehaviour
 
   public void Start()
   {
+    App_Functions.Instance.NetManager.AddListener_OnConnected(OnConnected);
+  }
+
+  private void OnConnected()
+  {
+    StartCoroutine(OnConnectedCoroutine());
+  }
+  private IEnumerator OnConnectedCoroutine()
+  {
+    yield return null;
+
     if (ReactorId == 0)
     {
-      Debug.LogError("HitReactor not assigned an id: '" + this.name + "'");
-      return;
+      Debug.LogError(
+        "HitReactor not assigned an id: '" + this.GetFullName() + "'");
+      yield break;
     }
 
     if (HitReactor._instances.ContainsKey(ReactorId))

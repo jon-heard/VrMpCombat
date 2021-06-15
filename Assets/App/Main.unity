@@ -860,7 +860,7 @@ Animation:
   m_Animations:
   - {fileID: 7400000, guid: 5c2b85dde5a5fd04298c94e95e2efb46, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!1 &1403703657
@@ -1243,9 +1243,10 @@ MonoBehaviour:
   MAX_DISTANCE_BOWPULL: 0.95
   MIN_DISTANCE_ARROWRELEASE: 0.45
   GRAVITY: 0.001
-  ARROW_VELOCITY_MIN: 0.4
-  ARROW_VELOCITY_MAX: 0.8
+  ARROW_SPEED_MIN: 0.1
+  ARROW_SPEED_MAX: 0.8
   ARROW_DESTRUCTION_DEPTH: -10
+  ARROW_EMBED_DEPTH: -0.05
   CONTROLLER_TURN_AMOUNT: 30
   COLOR_HITPOINT_DISPLAY: 1e1b14
   COLOR_HITPOINT_DISPLAY_EMPTY: 260303
@@ -1278,6 +1279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BeHost: 1
   HostIP: 192.168.0.16
+  NetManager: {fileID: 1725952069}
   DamageOverlay: {fileID: 1382317350}
 --- !u!114 &1725952068
 MonoBehaviour:
@@ -1311,7 +1313,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1725952063}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8aab4c8111b7c411b9b92cf3dbc5bd4e, type: 3}
+  m_Script: {fileID: 11500000, guid: 1292c7776fe26064b9a25ab91385d908, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 1
@@ -1334,7 +1336,6 @@ MonoBehaviour:
   playerSpawnMethod: 1
   spawnPrefabs:
   - {fileID: 4423548997927912339, guid: fecb62fd1622bb44c9325e0ad20d0fec, type: 3}
-  - {fileID: 9052476152832111878, guid: 73cc9212c18d3574c8afea5eb0f19ee8, type: 3}
 --- !u!114 &1725952070
 MonoBehaviour:
   m_ObjectHideFlags: 0

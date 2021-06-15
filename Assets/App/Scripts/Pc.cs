@@ -7,9 +7,18 @@ public class Pc : MonoBehaviour
 
   private void Start()
   {
-    var netIdentity = GetComponent<NetworkIdentity>();
-    if (netIdentity == null || netIdentity.hasAuthority) { return; }
-    Destroy(_character.Head_UpDown.GetComponent<Camera>());
-    Destroy(_character.Head_UpDown.GetComponent<AudioListener>());
+    App_Functions.Instance.NetManager.AddListener_OnConnected(OnConnected);
+  }
+
+  private void OnConnected()
+  {
+    if (GetComponent<NetworkIdentity>().isLocalPlayer)
+    {
+      _character.Head_UpDown.gameObject.AddComponent<AudioListener>();
+    }
+    else
+    {
+      Destroy(_character.Head_UpDown.GetComponent<Camera>());
+    }
   }
 }
