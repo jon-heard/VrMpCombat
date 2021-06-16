@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Management;
 
-public class App_Resources : Singleton<App_Resources>
+public class App_Resources : Common.Singleton<App_Resources>
 {
   public RisingText RisingTextPrefab;
   public Sprite RisingTextIcon_Default;

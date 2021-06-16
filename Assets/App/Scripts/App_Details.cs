@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-public class App_Details : Singleton<App_Details>
+public class App_Details : Common.Singleton<App_Details>
 {
   [Tooltip("If true, VR system is started when app begins")]
   public bool IN_VR = true;

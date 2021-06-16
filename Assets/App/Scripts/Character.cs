@@ -17,13 +17,16 @@ public class Character : NetworkBehaviour
   public Transform Hand_Left;
   public Transform Hand_Right;
   public Transform Body;
-  [Header("System")]
-  [SerializeField] private Arrow _arrowPrefab;
   [Header("Held")]
-  [SerializeField] private Bow _myBow;
+  [SerializeField] private Item_Held _itemHeldLeft;
+  [SerializeField] private Item_Held _itemHeldRight;
 
+  [NonSerialized] public CharacterClass Class;
   [NonSerialized] public Vector2 MovementInput;
   [NonSerialized] public bool IsDashing;
+  [NonSerialized] public bool IsWeaponInLeftHand = true;
+
+  public Item_Held_Weapon Weapon { get { return _itemHeldLeft as Item_Held_Weapon; } }
 
   public int Hitpoints
   {
@@ -45,24 +48,13 @@ public class Character : NetworkBehaviour
          _hitpoints = Mathf.Clamp(value, 0, _maxHitpoints);
       }
       _startingHitpoints = value;
-      if (_myBow) { _myBow.HitpointValues = new Vector2Int(Hitpoints, _maxHitpoints); }
+      var weaponHeld = (IsWeaponInLeftHand ? _itemHeldLeft : _itemHeldRight) as Item_Held_Weapon;
+      if (weaponHeld) { weaponHeld.HitpointValues = new Vector2Int(Hitpoints, _maxHitpoints); }
     }
   }
   private int _hitpoints = 0;
 
   public List<Collider> Colliders { get; private set; }
-
-  public bool IsPullingBow
-  {
-    get { return _isPullingBow; }
-    set
-    {
-      if (value == _isPullingBow) { return; }
-      _isPullingBow = value;
-      _myBow.IsPulling = _isPullingBow;
-    }
-  }
-  private bool _isPullingBow;
 
   public void Turn(bool left)
   {
@@ -71,27 +63,12 @@ public class Character : NetworkBehaviour
     transform.localEulerAngles = t;
   }
 
-  [Command]
-  public void Cmd_SpawnArrow(Vector3 position, Vector3 forward, float pullAmount)
-  {
-    var arrow = Instantiate(_arrowPrefab);
-    arrow.transform.position = position;
-    arrow.transform.forward = forward;
-    arrow.SourceCharacter = this;
-    NetworkServer.Spawn(arrow.gameObject, NetworkServer.localConnection);
-    var velocity = forward *
-      Mathf.Lerp(
-        App_Details.Instance.ARROW_SPEED_MIN,
-        App_Details.Instance.ARROW_SPEED_MAX,
-        pullAmount);
-    arrow.Rpc_OnArrowCreated(velocity);
-  }
-
   private float _const_ControllerTurnAmount;
   private bool _isLocalPc;
 
   private void Start()
   {
+    Class = GetComponent<CharacterClass>();
     _const_ControllerTurnAmount = App_Details.Instance.CONTROLLER_TURN_AMOUNT;
     Colliders = new List<Collider>();
     var bodyParts = new Transform[] { Head, Hand_Left, Hand_Right, Body };

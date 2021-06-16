@@ -5,13 +5,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Management;
 
-public class App_Functions : Singleton<App_Functions>
+public class App_Functions : Common.Singleton<App_Functions>
 {
   [SerializeField] private bool BeHost = true;
   [SerializeField] private string HostIP = "192.168.0.16";
-  [SerializeField] public NetworkManager_VrMpCombat NetManager;
   [SerializeField] private Animation DamageOverlay;
 
+  [NonSerialized] public NetworkManager_VrMpCombat NetManager;
   [NonSerialized] public List<GameObject> ArrowInstances = new List<GameObject>();
 
   public void ClearArrows()
@@ -31,15 +31,16 @@ public class App_Functions : Singleton<App_Functions>
 
   private bool _vrStarted = false;
 
+  private void Awake()
+  {
+    NetManager = GetComponent<NetworkManager_VrMpCombat>();
+  }
+
   private void Start()
   {
-    if (App_Details.Instance.IN_VR)
-    {
-      //StartCoroutine(StartVr());
-    }
-    var net = GetComponent<NetworkManager>();
-    net.networkAddress = HostIP;
-    if (BeHost) { net.StartHost(); } else { net.StartClient(); }
+    //if (App_Details.Instance.IN_VR) { StartCoroutine(StartVr()); }
+    NetManager.networkAddress = HostIP;
+    if (BeHost) { NetManager.StartHost(); } else { NetManager.StartClient(); }
   }
 
   private void OnDestroy()

@@ -10,7 +10,6 @@ public class Arrow : NetworkBehaviour
   [SerializeField] private Component[] _toRemovePostAnimation;
   [SerializeField] private Transform _nock;
   [SerializeField] private Collider _collider;
-  [SerializeField] private Animation _landedAnimation;
 
   [NonSerialized] public Character SourceCharacter;
 
@@ -43,7 +42,7 @@ public class Arrow : NetworkBehaviour
     StopAllCoroutines();
     App_Global.RemoveComponents(_toRemovePostFlying);
     transform.position = finalPosition;
-    _landedAnimation.Play();
+    GetComponent<Animation>().Play();
     if (hitReactorId != 0)
     {
       var hitReactor = HitReactor.GetHitReactorById(hitReactorId);

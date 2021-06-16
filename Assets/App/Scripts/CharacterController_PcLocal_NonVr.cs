@@ -17,6 +17,7 @@ public class CharacterController_PcLocal_NonVr : CharacterController_PcLocal
   private bool _isUnlooking;
   private Vector3 _leftHandDefaultPosition;
   private Vector3 _rightHandDefaultPosition;
+  private bool _priorIsWeaponActivated;
 
   protected override void Start()
   {
@@ -70,9 +71,10 @@ public class CharacterController_PcLocal_NonVr : CharacterController_PcLocal
 
     _character.MovementInput = _movementInput;
     var lookDelta = _input.Controls.Look_NonVr.ReadValue<Vector2>();
+    var isWeaponActivated = _character.Class.IsWeaponActivated;
 
     // Look up/down
-    if (!_character.IsPullingBow)
+    if (!isWeaponActivated)
     {
       var t = _character.Head_UpDown.localEulerAngles;
       t.x -= lookDelta.y * MouseLookSensitivity;
@@ -82,7 +84,7 @@ public class CharacterController_PcLocal_NonVr : CharacterController_PcLocal
     }
 
     // Turn left/right
-    if (!_character.IsPullingBow && !_isLooking)
+    if (!isWeaponActivated && !_isLooking)
     {
       var t = _character.transform.localEulerAngles;
       t.y += lookDelta.x * MouseLookSensitivity;
@@ -90,7 +92,7 @@ public class CharacterController_PcLocal_NonVr : CharacterController_PcLocal
     }
 
     // Look left/right
-    if (!_character.IsPullingBow && _isLooking)
+    if (!isWeaponActivated && _isLooking)
     {
       var t = _character.Head.localEulerAngles;
       t.y += lookDelta.x * MouseLookSensitivity;
@@ -98,7 +100,7 @@ public class CharacterController_PcLocal_NonVr : CharacterController_PcLocal
     }
 
     // Maneuver the bow
-    if (_character.IsPullingBow)
+    if (isWeaponActivated)
     {
       // Adjust right hand position via mouse
       var newRightHandPosition =
@@ -170,15 +172,14 @@ public class CharacterController_PcLocal_NonVr : CharacterController_PcLocal
   private void OnPullBow_Down(CallbackContext obj)
   {
     if (_paused) { return; }
-    _character.IsPullingBow = true;
-    var headHeight = _character.Head.localPosition.y;
+    _character.Class.SetIsWeaponActivated(true);
     _character.Hand_Left.localPosition = LeftHandPullPosition;
     _character.Hand_Right.localPosition = RightHandPullPosition;
   }
   private void OnPullBow_Up(CallbackContext obj)
   {
     if (_paused) { return; }
-    _character.IsPullingBow = false;
+    _character.Class.SetIsWeaponActivated(false);
     _character.Hand_Left.localPosition = _leftHandDefaultPosition;
     _character.Hand_Right.localPosition = _rightHandDefaultPosition;
   }

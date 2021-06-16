@@ -109,10 +109,13 @@ public class CharacterController_PcLocal_Vr : CharacterController_PcLocal
     if ((_character.Hand_Left.position - _character.Hand_Right.position).sqrMagnitude <=
           _const_maxDistanceTriggerBowPullSquared)
     {
-      _character.IsPullingBow = true;
+      _character.Class.Cmd_SetIsWeaponActivated(true);
     }
   }
-  private void OnPullBow_Up(CallbackContext obj) { _character.IsPullingBow = false; }
+  private void OnPullBow_Up(CallbackContext obj)
+  {
+    _character.Class.Cmd_SetIsWeaponActivated(false);
+  }
   private void OnDash_Down(CallbackContext obj) { _character.IsDashing = true; }
   private void OnDash_Up(CallbackContext obj) { _character.IsDashing = false; }
 }
