@@ -28,12 +28,12 @@ public class CharacterController_PcLocal_Vr : CharacterController_PcLocal
 
     if (App_Details.Instance.IN_VR)
     {
-      InputSystem.onAfterUpdate += RefreshTracking;
-      _input.Controls.PullBow.started += OnPullBow_Down;
-      _input.Controls.PullBow.canceled += OnPullBow_Up;
-      _input.Controls.Dash.started += OnDash_Down;
-      _input.Controls.Dash.canceled += OnDash_Up;
+      _input.Controls.PullArrow_Vr.started += OnPullBow_Down;
+      _input.Controls.PullArrow_Vr.canceled += OnPullBow_Up;
+      _input.Controls.PullTeleportArrow_Vr.started += OnPullTeleportArrow_Down;
+      _input.Controls.PullTeleportArrow_Vr.canceled += OnPullTeleportArrow_Up;
       StartCoroutine(UpdateCoroutine());
+      InputSystem.onAfterUpdate += RefreshTracking;
     }
     else
     {
@@ -109,13 +109,26 @@ public class CharacterController_PcLocal_Vr : CharacterController_PcLocal
     if ((_character.Hand_Left.position - _character.Hand_Right.position).sqrMagnitude <=
           _const_maxDistanceTriggerBowPullSquared)
     {
-      _character.Class.Cmd_SetIsWeaponActivated(true);
+      _character.Class.SetFlag(CharacterClass_Archer.Flag_IsTeleporting, false);
+      _character.Class.SetFlag(CharacterClass_Archer.Flag_IsPulling, true);
     }
   }
   private void OnPullBow_Up(CallbackContext obj)
   {
-    _character.Class.Cmd_SetIsWeaponActivated(false);
+    _character.Class.SetFlag(CharacterClass_Archer.Flag_IsPulling, false);
   }
-  private void OnDash_Down(CallbackContext obj) { _character.IsDashing = true; }
-  private void OnDash_Up(CallbackContext obj) { _character.IsDashing = false; }
+
+  private void OnPullTeleportArrow_Down(CallbackContext obj)
+  {
+    if ((_character.Hand_Left.position - _character.Hand_Right.position).sqrMagnitude <=
+          _const_maxDistanceTriggerBowPullSquared)
+    {
+      _character.Class.SetFlag(CharacterClass_Archer.Flag_IsTeleporting, true);
+      _character.Class.SetFlag(CharacterClass_Archer.Flag_IsPulling, true);
+    }
+  }
+  private void OnPullTeleportArrow_Up(CallbackContext obj)
+  {
+    _character.Class.SetFlag(CharacterClass_Archer.Flag_IsPulling, false);
+  }
 }

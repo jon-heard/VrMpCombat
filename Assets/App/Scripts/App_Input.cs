@@ -141,14 +141,6 @@ public class @App_Input : IInputActionCollection, IDisposable
             ""id"": ""937cba72-ae89-4aca-8a20-48ef186c134c"",
             ""actions"": [
                 {
-                    ""name"": ""Dash"",
-                    ""type"": ""Button"",
-                    ""id"": ""7b23d85e-c16b-4067-b357-57787f927d22"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""Look_NonVr"",
                     ""type"": ""Value"",
                     ""id"": ""660e0630-5ef9-440e-b021-4c95a7346298"",
@@ -205,9 +197,33 @@ public class @App_Input : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""PullBow"",
+                    ""name"": ""PullArrow_Vr"",
                     ""type"": ""Button"",
                     ""id"": ""17aa075a-0912-45a4-b135-e90d4ed253f0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""PullTeleportArrow_Vr"",
+                    ""type"": ""Button"",
+                    ""id"": ""7b117b33-6ddc-468e-8b4b-c46e09a496bb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""PullArrow_NonVr"",
+                    ""type"": ""Button"",
+                    ""id"": ""2750d0e0-edd3-4080-b641-836097260f2e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""PullTeleportArrow_NonVr"",
+                    ""type"": ""Button"",
+                    ""id"": ""783f30d4-39c2-4c48-a33c-fde315783216"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -243,6 +259,17 @@ public class @App_Input : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""957985bb-585a-4869-bee6-5fca0192fe10"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement_Backward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""62292788-6b34-4c4e-83e5-3792d79beb4f"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
@@ -254,45 +281,12 @@ public class @App_Input : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""f98a77a7-3c2c-4e67-b021-22eff862f9a6"",
-                    ""path"": ""<XRController>{LeftHand}/thumbstickClicked"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Dash"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0c84d6e0-9a8d-47da-9afd-01bae51b9c1e"",
-                    ""path"": ""<Keyboard>/shift"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Dash"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""a2a51509-71df-4036-a5b4-2ae34a85a32b"",
                     ""path"": ""<XRController>{LeftHand}/thumbstick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Movement_Vr"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""7741b84d-2adb-4822-a8cb-b8353ed71ff7"",
-                    ""path"": ""<XRController>{LeftHand}/triggerPressed"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PullBow"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -320,8 +314,30 @@ public class @App_Input : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""fd9db355-af83-4021-9ae6-3fe09eb49561"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement_Strafe_Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""fd22446f-9828-4068-9805-9dae194515ff"",
                     ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement_Strafe_Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f5e36339-ccc0-47e9-945c-d47e07055ca4"",
+                    ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -342,6 +358,17 @@ public class @App_Input : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""1642f971-8b47-420c-94cc-db2fe966f29f"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement_Forward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""702c7e8e-a0d8-40fa-9987-27b256d9e4b3"",
                     ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
@@ -353,23 +380,67 @@ public class @App_Input : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""f1218889-d9bd-4a75-a6e4-21a34e482550"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PullBow"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""25af9202-b9bf-4310-b174-3b3e9bbe6ed7"",
                     ""path"": ""<XRController>{RightHand}/thumbstick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Look_Vr"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""78a0d609-d794-416c-ae0a-8192749887ac"",
+                    ""path"": ""<XRController>{LeftHand}/primaryButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PullTeleportArrow_Vr"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ee8ea9f6-14d8-49f3-b2d9-3d9168bc686b"",
+                    ""path"": ""<XRController>{LeftHand}/secondaryButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PullTeleportArrow_Vr"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7741b84d-2adb-4822-a8cb-b8353ed71ff7"",
+                    ""path"": ""<XRController>{LeftHand}/triggerPressed"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PullArrow_Vr"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f1218889-d9bd-4a75-a6e4-21a34e482550"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PullArrow_NonVr"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a3d09841-a52e-4d5f-a926-a5b5f2fc15f0"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PullTeleportArrow_NonVr"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -388,7 +459,6 @@ public class @App_Input : IInputActionCollection, IDisposable
         m_Vr_Transforms_Hand_Right_Rotation = m_Vr_Transforms.FindAction("Hand_Right_Rotation", throwIfNotFound: true);
         // Controls
         m_Controls = asset.FindActionMap("Controls", throwIfNotFound: true);
-        m_Controls_Dash = m_Controls.FindAction("Dash", throwIfNotFound: true);
         m_Controls_Look_NonVr = m_Controls.FindAction("Look_NonVr", throwIfNotFound: true);
         m_Controls_Look_Vr = m_Controls.FindAction("Look_Vr", throwIfNotFound: true);
         m_Controls_Movement_Vr = m_Controls.FindAction("Movement_Vr", throwIfNotFound: true);
@@ -396,7 +466,10 @@ public class @App_Input : IInputActionCollection, IDisposable
         m_Controls_Movement_Strafe_Right = m_Controls.FindAction("Movement_Strafe_Right", throwIfNotFound: true);
         m_Controls_Movement_Backward = m_Controls.FindAction("Movement_Backward", throwIfNotFound: true);
         m_Controls_Movement_Strafe_Left = m_Controls.FindAction("Movement_Strafe_Left", throwIfNotFound: true);
-        m_Controls_PullBow = m_Controls.FindAction("PullBow", throwIfNotFound: true);
+        m_Controls_PullArrow_Vr = m_Controls.FindAction("PullArrow_Vr", throwIfNotFound: true);
+        m_Controls_PullTeleportArrow_Vr = m_Controls.FindAction("PullTeleportArrow_Vr", throwIfNotFound: true);
+        m_Controls_PullArrow_NonVr = m_Controls.FindAction("PullArrow_NonVr", throwIfNotFound: true);
+        m_Controls_PullTeleportArrow_NonVr = m_Controls.FindAction("PullTeleportArrow_NonVr", throwIfNotFound: true);
         m_Controls_PauseToggle = m_Controls.FindAction("PauseToggle", throwIfNotFound: true);
         m_Controls_MouseLookEnable = m_Controls.FindAction("MouseLookEnable", throwIfNotFound: true);
     }
@@ -521,7 +594,6 @@ public class @App_Input : IInputActionCollection, IDisposable
     // Controls
     private readonly InputActionMap m_Controls;
     private IControlsActions m_ControlsActionsCallbackInterface;
-    private readonly InputAction m_Controls_Dash;
     private readonly InputAction m_Controls_Look_NonVr;
     private readonly InputAction m_Controls_Look_Vr;
     private readonly InputAction m_Controls_Movement_Vr;
@@ -529,14 +601,16 @@ public class @App_Input : IInputActionCollection, IDisposable
     private readonly InputAction m_Controls_Movement_Strafe_Right;
     private readonly InputAction m_Controls_Movement_Backward;
     private readonly InputAction m_Controls_Movement_Strafe_Left;
-    private readonly InputAction m_Controls_PullBow;
+    private readonly InputAction m_Controls_PullArrow_Vr;
+    private readonly InputAction m_Controls_PullTeleportArrow_Vr;
+    private readonly InputAction m_Controls_PullArrow_NonVr;
+    private readonly InputAction m_Controls_PullTeleportArrow_NonVr;
     private readonly InputAction m_Controls_PauseToggle;
     private readonly InputAction m_Controls_MouseLookEnable;
     public struct ControlsActions
     {
         private @App_Input m_Wrapper;
         public ControlsActions(@App_Input wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Dash => m_Wrapper.m_Controls_Dash;
         public InputAction @Look_NonVr => m_Wrapper.m_Controls_Look_NonVr;
         public InputAction @Look_Vr => m_Wrapper.m_Controls_Look_Vr;
         public InputAction @Movement_Vr => m_Wrapper.m_Controls_Movement_Vr;
@@ -544,7 +618,10 @@ public class @App_Input : IInputActionCollection, IDisposable
         public InputAction @Movement_Strafe_Right => m_Wrapper.m_Controls_Movement_Strafe_Right;
         public InputAction @Movement_Backward => m_Wrapper.m_Controls_Movement_Backward;
         public InputAction @Movement_Strafe_Left => m_Wrapper.m_Controls_Movement_Strafe_Left;
-        public InputAction @PullBow => m_Wrapper.m_Controls_PullBow;
+        public InputAction @PullArrow_Vr => m_Wrapper.m_Controls_PullArrow_Vr;
+        public InputAction @PullTeleportArrow_Vr => m_Wrapper.m_Controls_PullTeleportArrow_Vr;
+        public InputAction @PullArrow_NonVr => m_Wrapper.m_Controls_PullArrow_NonVr;
+        public InputAction @PullTeleportArrow_NonVr => m_Wrapper.m_Controls_PullTeleportArrow_NonVr;
         public InputAction @PauseToggle => m_Wrapper.m_Controls_PauseToggle;
         public InputAction @MouseLookEnable => m_Wrapper.m_Controls_MouseLookEnable;
         public InputActionMap Get() { return m_Wrapper.m_Controls; }
@@ -556,9 +633,6 @@ public class @App_Input : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_ControlsActionsCallbackInterface != null)
             {
-                @Dash.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnDash;
-                @Dash.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnDash;
-                @Dash.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnDash;
                 @Look_NonVr.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnLook_NonVr;
                 @Look_NonVr.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnLook_NonVr;
                 @Look_NonVr.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnLook_NonVr;
@@ -580,9 +654,18 @@ public class @App_Input : IInputActionCollection, IDisposable
                 @Movement_Strafe_Left.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMovement_Strafe_Left;
                 @Movement_Strafe_Left.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMovement_Strafe_Left;
                 @Movement_Strafe_Left.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMovement_Strafe_Left;
-                @PullBow.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPullBow;
-                @PullBow.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPullBow;
-                @PullBow.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPullBow;
+                @PullArrow_Vr.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPullArrow_Vr;
+                @PullArrow_Vr.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPullArrow_Vr;
+                @PullArrow_Vr.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPullArrow_Vr;
+                @PullTeleportArrow_Vr.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPullTeleportArrow_Vr;
+                @PullTeleportArrow_Vr.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPullTeleportArrow_Vr;
+                @PullTeleportArrow_Vr.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPullTeleportArrow_Vr;
+                @PullArrow_NonVr.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPullArrow_NonVr;
+                @PullArrow_NonVr.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPullArrow_NonVr;
+                @PullArrow_NonVr.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPullArrow_NonVr;
+                @PullTeleportArrow_NonVr.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPullTeleportArrow_NonVr;
+                @PullTeleportArrow_NonVr.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPullTeleportArrow_NonVr;
+                @PullTeleportArrow_NonVr.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPullTeleportArrow_NonVr;
                 @PauseToggle.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPauseToggle;
                 @PauseToggle.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPauseToggle;
                 @PauseToggle.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnPauseToggle;
@@ -593,9 +676,6 @@ public class @App_Input : IInputActionCollection, IDisposable
             m_Wrapper.m_ControlsActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Dash.started += instance.OnDash;
-                @Dash.performed += instance.OnDash;
-                @Dash.canceled += instance.OnDash;
                 @Look_NonVr.started += instance.OnLook_NonVr;
                 @Look_NonVr.performed += instance.OnLook_NonVr;
                 @Look_NonVr.canceled += instance.OnLook_NonVr;
@@ -617,9 +697,18 @@ public class @App_Input : IInputActionCollection, IDisposable
                 @Movement_Strafe_Left.started += instance.OnMovement_Strafe_Left;
                 @Movement_Strafe_Left.performed += instance.OnMovement_Strafe_Left;
                 @Movement_Strafe_Left.canceled += instance.OnMovement_Strafe_Left;
-                @PullBow.started += instance.OnPullBow;
-                @PullBow.performed += instance.OnPullBow;
-                @PullBow.canceled += instance.OnPullBow;
+                @PullArrow_Vr.started += instance.OnPullArrow_Vr;
+                @PullArrow_Vr.performed += instance.OnPullArrow_Vr;
+                @PullArrow_Vr.canceled += instance.OnPullArrow_Vr;
+                @PullTeleportArrow_Vr.started += instance.OnPullTeleportArrow_Vr;
+                @PullTeleportArrow_Vr.performed += instance.OnPullTeleportArrow_Vr;
+                @PullTeleportArrow_Vr.canceled += instance.OnPullTeleportArrow_Vr;
+                @PullArrow_NonVr.started += instance.OnPullArrow_NonVr;
+                @PullArrow_NonVr.performed += instance.OnPullArrow_NonVr;
+                @PullArrow_NonVr.canceled += instance.OnPullArrow_NonVr;
+                @PullTeleportArrow_NonVr.started += instance.OnPullTeleportArrow_NonVr;
+                @PullTeleportArrow_NonVr.performed += instance.OnPullTeleportArrow_NonVr;
+                @PullTeleportArrow_NonVr.canceled += instance.OnPullTeleportArrow_NonVr;
                 @PauseToggle.started += instance.OnPauseToggle;
                 @PauseToggle.performed += instance.OnPauseToggle;
                 @PauseToggle.canceled += instance.OnPauseToggle;
@@ -641,7 +730,6 @@ public class @App_Input : IInputActionCollection, IDisposable
     }
     public interface IControlsActions
     {
-        void OnDash(InputAction.CallbackContext context);
         void OnLook_NonVr(InputAction.CallbackContext context);
         void OnLook_Vr(InputAction.CallbackContext context);
         void OnMovement_Vr(InputAction.CallbackContext context);
@@ -649,7 +737,10 @@ public class @App_Input : IInputActionCollection, IDisposable
         void OnMovement_Strafe_Right(InputAction.CallbackContext context);
         void OnMovement_Backward(InputAction.CallbackContext context);
         void OnMovement_Strafe_Left(InputAction.CallbackContext context);
-        void OnPullBow(InputAction.CallbackContext context);
+        void OnPullArrow_Vr(InputAction.CallbackContext context);
+        void OnPullTeleportArrow_Vr(InputAction.CallbackContext context);
+        void OnPullArrow_NonVr(InputAction.CallbackContext context);
+        void OnPullTeleportArrow_NonVr(InputAction.CallbackContext context);
         void OnPauseToggle(InputAction.CallbackContext context);
         void OnMouseLookEnable(InputAction.CallbackContext context);
     }

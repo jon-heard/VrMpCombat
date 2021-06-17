@@ -34,10 +34,10 @@ public class CharacterController_PcLocal_NonVr : CharacterController_PcLocal
       _input.Controls.Movement_Backward.canceled += OnMovementBackward_Up;
       _input.Controls.Movement_Strafe_Left.started += OnMovementLeft_Down;
       _input.Controls.Movement_Strafe_Left.canceled += OnMovementLeft_Up;
-      _input.Controls.Dash.started += OnDash_Down;
-      _input.Controls.Dash.canceled += OnDash_Up;
-      _input.Controls.PullBow.started += OnPullBow_Down;
-      _input.Controls.PullBow.canceled += OnPullBow_Up;
+      _input.Controls.PullArrow_NonVr.started += OnPullArrow_Down;
+      _input.Controls.PullArrow_NonVr.canceled += OnPullArrow_Up;
+      _input.Controls.PullTeleportArrow_NonVr.started += OnPullTeleportArrow_Down;
+      _input.Controls.PullTeleportArrow_NonVr.canceled += OnPullTeleportArrow_Up;
       _input.Controls.MouseLookEnable.started += OnMouseLookEnabled_Down;
       _input.Controls.MouseLookEnable.canceled += OnMouseLookEnabled_Up;
       _leftHandDefaultPosition = _character.Hand_Left.localPosition;
@@ -71,10 +71,10 @@ public class CharacterController_PcLocal_NonVr : CharacterController_PcLocal
 
     _character.MovementInput = _movementInput;
     var lookDelta = _input.Controls.Look_NonVr.ReadValue<Vector2>();
-    var isWeaponActivated = _character.Class.IsWeaponActivated;
+    var isArrowPulled = _character.Class.GetFlag(CharacterClass_Archer.Flag_IsPulling);
 
     // Look up/down
-    if (!isWeaponActivated)
+    if (!isArrowPulled)
     {
       var t = _character.Head_UpDown.localEulerAngles;
       t.x -= lookDelta.y * MouseLookSensitivity;
@@ -84,7 +84,7 @@ public class CharacterController_PcLocal_NonVr : CharacterController_PcLocal
     }
 
     // Turn left/right
-    if (!isWeaponActivated && !_isLooking)
+    if (!isArrowPulled && !_isLooking)
     {
       var t = _character.transform.localEulerAngles;
       t.y += lookDelta.x * MouseLookSensitivity;
@@ -92,7 +92,7 @@ public class CharacterController_PcLocal_NonVr : CharacterController_PcLocal
     }
 
     // Look left/right
-    if (!isWeaponActivated && _isLooking)
+    if (!isArrowPulled && _isLooking)
     {
       var t = _character.Head.localEulerAngles;
       t.y += lookDelta.x * MouseLookSensitivity;
@@ -100,7 +100,7 @@ public class CharacterController_PcLocal_NonVr : CharacterController_PcLocal
     }
 
     // Maneuver the bow
-    if (isWeaponActivated)
+    if (isArrowPulled)
     {
       // Adjust right hand position via mouse
       var newRightHandPosition =
@@ -161,27 +161,40 @@ public class CharacterController_PcLocal_NonVr : CharacterController_PcLocal
   private void OnMovementBackward_Up(CallbackContext obj) { _movementInput.y = 0.0f; }
   private void OnMovementLeft_Down(CallbackContext obj) { _movementInput.x = -1.0f; }
   private void OnMovementLeft_Up(CallbackContext obj) { _movementInput.x = 0.0f; }
-  private void OnDash_Down(CallbackContext obj) { _character.IsDashing = true; }
-  private void OnDash_Up(CallbackContext obj) { _character.IsDashing = false; }
   private void OnMouseLookEnabled_Down(CallbackContext obj) { _isLooking = true; }
   private void OnMouseLookEnabled_Up(CallbackContext obj)
   {
     _isLooking = false;
     StartCoroutine(UnlookCoroutine());
   }
-  private void OnPullBow_Down(CallbackContext obj)
+  private void OnPullArrow_Down(CallbackContext obj)
   {
     if (_paused) { return; }
-    _character.Class.SetIsWeaponActivated(true);
+    _character.Class.SetFlag(CharacterClass_Archer.Flag_IsTeleporting, false);
+    _character.Class.SetFlag(CharacterClass_Archer.Flag_IsPulling, true);
     _character.Hand_Left.localPosition = LeftHandPullPosition;
     _character.Hand_Right.localPosition = RightHandPullPosition;
   }
-  private void OnPullBow_Up(CallbackContext obj)
+  private void OnPullArrow_Up(CallbackContext obj)
   {
     if (_paused) { return; }
-    _character.Class.SetIsWeaponActivated(false);
+    _character.Class.SetFlag(CharacterClass_Archer.Flag_IsPulling, false);
     _character.Hand_Left.localPosition = _leftHandDefaultPosition;
     _character.Hand_Right.localPosition = _rightHandDefaultPosition;
   }
-
+  private void OnPullTeleportArrow_Down(CallbackContext obj)
+  {
+    if (_paused) { return; }
+    _character.Class.SetFlag(CharacterClass_Archer.Flag_IsTeleporting, true);
+    _character.Class.SetFlag(CharacterClass_Archer.Flag_IsPulling, true);
+    _character.Hand_Left.localPosition = LeftHandPullPosition;
+    _character.Hand_Right.localPosition = RightHandPullPosition;
+  }
+  private void OnPullTeleportArrow_Up(CallbackContext obj)
+  {
+    if (_paused) { return; }
+    _character.Class.SetFlag(CharacterClass_Archer.Flag_IsPulling, false);
+    _character.Hand_Left.localPosition = _leftHandDefaultPosition;
+    _character.Hand_Right.localPosition = _rightHandDefaultPosition;
+  }
 }

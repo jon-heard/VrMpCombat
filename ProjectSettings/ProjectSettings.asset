@@ -134,6 +134,9 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 11400000, guid: a7aeb43c7bff20a41ad9ad30d38ac82f, type: 2}
   - {fileID: -7646261613696203165, guid: d34faaa2bf62c6145bf5145d827efe85, type: 2}
   metroInputSource: 0
@@ -153,6 +156,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
+    Android: com.Pixigig.VrMpCombat
     Standalone: com.Pixigig.VrMpCombat
   buildNumber:
     Standalone: 0

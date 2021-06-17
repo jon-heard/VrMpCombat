@@ -20,11 +20,15 @@ public class App_Details : Common.Singleton<App_Details>
   [Tooltip("How far arrow falls before it's considered to be off map edge, and removed")]
   public float ARROW_DESTRUCTION_DEPTH = -10.0f;
   [Tooltip("How far arrow falls before it's considered to be off map edge, and removed")]
-  public float ARROW_EMBED_DEPTH = 0.05f;
+  public float ARROW_EMBED_DEPTH = 0.0f;
+  [Tooltip("How much less speed a teleport arrow gets relative to a normal arrow")]
+  public float ARROW_TELEPORT_SPEED_MODIFIER = 0.5f;
   [Tooltip("Controls include snap-rotation.  This value is the angle of the snap.")]
   public float CONTROLLER_TURN_AMOUNT = 15.0f;
   [Tooltip("Color of hitpoint visualization when hitpoint is NOT spent")]
   public string COLOR_HITPOINT_DISPLAY = "1e1b14";
   [Tooltip("Color of hitpoint visualization when hitpoint is spent")]
   public string COLOR_HITPOINT_DISPLAY_EMPTY = "260303";
+  [Tooltip("How many fixed updates a teleport takes")]
+  public uint TELEPORT_FRAME_COUNT = 5;
 }

@@ -128,14 +128,6 @@
             "id": "937cba72-ae89-4aca-8a20-48ef186c134c",
             "actions": [
                 {
-                    "name": "Dash",
-                    "type": "Button",
-                    "id": "7b23d85e-c16b-4067-b357-57787f927d22",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Look_NonVr",
                     "type": "Value",
                     "id": "660e0630-5ef9-440e-b021-4c95a7346298",
@@ -192,9 +184,33 @@
                     "interactions": ""
                 },
                 {
-                    "name": "PullBow",
+                    "name": "PullArrow_Vr",
                     "type": "Button",
                     "id": "17aa075a-0912-45a4-b135-e90d4ed253f0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "PullTeleportArrow_Vr",
+                    "type": "Button",
+                    "id": "7b117b33-6ddc-468e-8b4b-c46e09a496bb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "PullArrow_NonVr",
+                    "type": "Button",
+                    "id": "2750d0e0-edd3-4080-b641-836097260f2e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "PullTeleportArrow_NonVr",
+                    "type": "Button",
+                    "id": "783f30d4-39c2-4c48-a33c-fde315783216",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -230,6 +246,17 @@
                 },
                 {
                     "name": "",
+                    "id": "957985bb-585a-4869-bee6-5fca0192fe10",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement_Backward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "62292788-6b34-4c4e-83e5-3792d79beb4f",
                     "path": "<Mouse>/delta",
                     "interactions": "",
@@ -241,45 +268,12 @@
                 },
                 {
                     "name": "",
-                    "id": "f98a77a7-3c2c-4e67-b021-22eff862f9a6",
-                    "path": "<XRController>{LeftHand}/thumbstickClicked",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0c84d6e0-9a8d-47da-9afd-01bae51b9c1e",
-                    "path": "<Keyboard>/shift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "a2a51509-71df-4036-a5b4-2ae34a85a32b",
                     "path": "<XRController>{LeftHand}/thumbstick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Movement_Vr",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7741b84d-2adb-4822-a8cb-b8353ed71ff7",
-                    "path": "<XRController>{LeftHand}/triggerPressed",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "PullBow",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -307,8 +301,30 @@
                 },
                 {
                     "name": "",
+                    "id": "fd9db355-af83-4021-9ae6-3fe09eb49561",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement_Strafe_Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "fd22446f-9828-4068-9805-9dae194515ff",
                     "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement_Strafe_Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f5e36339-ccc0-47e9-945c-d47e07055ca4",
+                    "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -329,6 +345,17 @@
                 },
                 {
                     "name": "",
+                    "id": "1642f971-8b47-420c-94cc-db2fe966f29f",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement_Forward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "702c7e8e-a0d8-40fa-9987-27b256d9e4b3",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
@@ -340,23 +367,67 @@
                 },
                 {
                     "name": "",
-                    "id": "f1218889-d9bd-4a75-a6e4-21a34e482550",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "PullBow",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "25af9202-b9bf-4310-b174-3b3e9bbe6ed7",
                     "path": "<XRController>{RightHand}/thumbstick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Look_Vr",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "78a0d609-d794-416c-ae0a-8192749887ac",
+                    "path": "<XRController>{LeftHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PullTeleportArrow_Vr",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ee8ea9f6-14d8-49f3-b2d9-3d9168bc686b",
+                    "path": "<XRController>{LeftHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PullTeleportArrow_Vr",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7741b84d-2adb-4822-a8cb-b8353ed71ff7",
+                    "path": "<XRController>{LeftHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PullArrow_Vr",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f1218889-d9bd-4a75-a6e4-21a34e482550",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PullArrow_NonVr",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a3d09841-a52e-4d5f-a926-a5b5f2fc15f0",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PullTeleportArrow_NonVr",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

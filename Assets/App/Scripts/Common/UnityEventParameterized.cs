@@ -12,6 +12,7 @@ namespace Common
       for (var i = 0; i < count; i++)
       {
         var target = GetPersistentTarget(i);
+        if (target == null) { continue; }
         var methodName = GetPersistentMethodName(i);
         target.GetType().GetMethod(methodName).Invoke(target, new object[] { parameter });
       }

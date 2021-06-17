@@ -9,9 +9,7 @@ public class Character : NetworkBehaviour
   [SerializeField] private int _startingHitpoints = 7;
   [SerializeField] private int _maxHitpoints = 10;
   [SerializeField] private float _speed = 2.0f;
-  [SerializeField] private float _dashSpeed = 6.0f;
   [Header("Body parts")]
-  public HitReactor[] HitReactors;
   public Transform Head;
   public Transform Head_UpDown;
   public Transform Hand_Left;
@@ -23,8 +21,8 @@ public class Character : NetworkBehaviour
 
   [NonSerialized] public CharacterClass Class;
   [NonSerialized] public Vector2 MovementInput;
-  [NonSerialized] public bool IsDashing;
   [NonSerialized] public bool IsWeaponInLeftHand = true;
+  [NonSerialized] public List<Collider> Colliders = new List<Collider>();
 
   public Item_Held_Weapon Weapon { get { return _itemHeldLeft as Item_Held_Weapon; } }
 
@@ -54,7 +52,7 @@ public class Character : NetworkBehaviour
   }
   private int _hitpoints = 0;
 
-  public List<Collider> Colliders { get; private set; }
+  private List<HitReactor> _hitReactors = new List<HitReactor>();
 
   public void Turn(bool left)
   {
@@ -71,13 +69,15 @@ public class Character : NetworkBehaviour
     Class = GetComponent<CharacterClass>();
     _const_ControllerTurnAmount = App_Details.Instance.CONTROLLER_TURN_AMOUNT;
     Colliders = new List<Collider>();
-    var bodyParts = new Transform[] { Head, Hand_Left, Hand_Right, Body };
+    var bodyParts = new Transform[] { Head_UpDown, Hand_Left, Hand_Right, Body };
     foreach (var bodyPart in bodyParts)
     {
       foreach (Transform t in bodyPart)
       {
         var c = t.GetComponent<Collider>();
         if (c) { Colliders.Add(c); }
+        var h = t.GetComponent<HitReactor>();
+        if (h) { _hitReactors.Add(h); }
       }
     }
     Hitpoints = _startingHitpoints;
@@ -89,11 +89,11 @@ public class Character : NetworkBehaviour
   {
     // Allow for up to ~10000 nonnetworked (preassigned) HitReactors and ~429k networked objects
     var reactorIdOffset = (GetComponent<NetworkIdentity>().netId + 1) * 10000;
-    for (uint i = 0; i < HitReactors.Length; i++)
+    for (uint i = 0; i < _hitReactors.Count; i++)
     {
-      if (HitReactors[i].ReactorId == 0)
+      if (_hitReactors[(int)i].ReactorId == 0)
       {
-        HitReactors[i].ReactorId = i + reactorIdOffset;
+        _hitReactors[(int)i].ReactorId = i + reactorIdOffset;
       }
     }
   }
@@ -108,13 +108,13 @@ public class Character : NetworkBehaviour
     if (MovementInput.y != 0)
     {
       var t = transform.localPosition;
-      t += transform.forward * MovementInput.y * (IsDashing ? _dashSpeed : _speed) * Time.deltaTime;
+      t += transform.forward * MovementInput.y * _speed * Time.deltaTime;
       transform.localPosition = t;
     }
     if (MovementInput.x != 0)
     {
       var t = transform.localPosition;
-      t += transform.right * MovementInput.x * (IsDashing ? _dashSpeed : _speed) * Time.deltaTime;
+      t += transform.right * MovementInput.x * _speed * Time.deltaTime;
       transform.localPosition = t;
     }
   }
